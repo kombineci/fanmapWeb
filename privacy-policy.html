@@ -4,164 +4,248 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gizlilik Politikası - FanMap</title>
+    <meta name="description" content="FanMap uygulaması gizlilik politikası ve KVKK aydınlatma metni.">
+    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#6366f1">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0a; --card: #141414; --border: #262626;
+            --text: #c9c9c9; --heading: #ffffff; --muted: #7a7a7a;
+            --accent: #6366f1; --accent-soft: rgba(99,102,241,0.12);
+        }
+        html { scroll-behavior: smooth; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
-            line-height: 1.8;
+            background: var(--bg); color: var(--text); line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        h1 {
-            font-size: 2rem;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-        .date {
-            color: #666;
-            margin-bottom: 32px;
-            font-size: 0.9rem;
-        }
-        h2 {
-            color: #fff;
-            margin-top: 32px;
-            margin-bottom: 12px;
-            font-size: 1.3rem;
-        }
-        p, li {
-            color: #bbb;
-            margin-bottom: 12px;
-        }
-        ul {
-            padding-left: 24px;
-            margin-bottom: 12px;
-        }
-        a {
-            color: #888;
-            text-decoration: none;
-        }
-        a:hover { text-decoration: underline; }
+        .container { max-width: 820px; margin: 0 auto; padding: 40px 22px 80px; }
         .back {
-            display: inline-block;
-            margin-bottom: 24px;
-            color: #666;
-            font-size: 0.9rem;
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-bottom: 28px; color: var(--muted);
+            font-size: 0.9rem; text-decoration: none;
         }
-        .lang-divider {
-            border: none;
-            border-top: 1px solid #333;
-            margin: 48px 0;
+        .back:hover { color: var(--heading); }
+        .doc-head { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 8px; }
+        h1 { font-size: 2rem; color: var(--heading); letter-spacing: -0.02em; margin-bottom: 10px; }
+        .date { color: var(--muted); font-size: 0.9rem; }
+        .lead { color: var(--text); margin-top: 20px; }
+        h2 {
+            color: var(--heading); font-size: 1.22rem; letter-spacing: -0.01em;
+            margin-top: 40px; margin-bottom: 14px; padding-left: 14px;
+            border-left: 3px solid var(--accent);
         }
+        h3 { color: #e4e4e4; font-size: 1.02rem; margin-top: 22px; margin-bottom: 8px; }
+        p, li { margin-bottom: 12px; }
+        ul, ol { padding-left: 24px; margin-bottom: 12px; }
+        li { padding-left: 4px; }
+        strong { color: #e8e8e8; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .note {
+            background: var(--accent-soft); border: 1px solid rgba(99,102,241,0.3);
+            border-radius: 12px; padding: 16px 20px; margin: 20px 0; font-size: 0.95rem;
+        }
+        .card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 4px 20px; margin: 16px 0;
+        }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.92rem; }
+        th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        th { color: var(--heading); font-weight: 600; }
+        .table-wrap { overflow-x: auto; }
+        footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+        footer a { color: var(--muted); }
+        footer a:hover { color: var(--heading); }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back">&larr; Ana Sayfa</a>
+        <a href="index.html" class="back">← Ana Sayfa</a>
 
-        <h1>Gizlilik Politikası</h1>
-        <p class="date">Son güncelleme: 6 Nisan 2026</p>
+        <div class="doc-head">
+            <h1>Gizlilik Politikası ve KVKK Aydınlatma Metni</h1>
+            <p class="date">Son güncelleme: 24 Temmuz 2026</p>
+            <p class="lead">
+                Bu Gizlilik Politikası, <strong>FanMap</strong> mobil uygulamasının
+                (“Uygulama”) kullanıcılarına ait kişisel verilerin 6698 sayılı Kişisel
+                Verilerin Korunması Kanunu (“KVKK”) ve ilgili mevzuata uygun olarak
+                nasıl işlendiğini, saklandığını ve korunduğunu açıklar. Uygulamayı
+                kullanarak bu politikada açıklanan veri işleme faaliyetlerini okuduğunuzu
+                ve anladığınızı kabul etmiş olursunuz.
+            </p>
+        </div>
 
-        <h2>1. Toplanan Bilgiler</h2>
-        <p>FanMap uygulaması aşağıdaki bilgileri toplayabilir:</p>
+        <h2>1. Veri Sorumlusu ve Geliştirici Kimliği</h2>
+        <p>
+            Bu uygulama bireysel yazılım geliştiricileri tarafından yönetilmektedir.
+            iOS sürümü <strong>Özgün Can Beydili</strong>, Android sürümü ise
+            <strong>Mustafa Yalçın Canbay</strong> adına yayınlanmaktadır. Kişisel
+            verileriniz, veri sorumlusu sıfatıyla ilgili geliştiriciler tarafından
+            işlenmektedir. Bu politika kapsamındaki tüm talep ve başvurularınızı, aşağıda
+            “Başvuru Yöntemi” bölümünde belirtilen kanaldan iletebilirsiniz.
+        </p>
+
+        <h2>2. İşlenen Kişisel Veriler</h2>
+        <p>Uygulama kapsamında aşağıdaki kişisel veri kategorileri işlenebilir:</p>
+        <div class="table-wrap">
+        <table>
+            <thead><tr><th>Kategori</th><th>İşlenen Veriler</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Kimlik ve Hesap</strong></td><td>E-posta adresi, kullanıcı adı; Google veya Apple ile giriş yapıldığında ilgili sağlayıcı tarafından iletilen benzersiz kimlik ve e-posta bilgisi.</td></tr>
+                <tr><td><strong>Profil</strong></td><td>Seçtiğiniz avatar, desteklediğiniz takım ve şehir bilgisi.</td></tr>
+                <tr><td><strong>Oyun Verileri</strong></td><td>Quiz sonuçları, puanlar, seviye ilerlemesi, elmas bakiyesi, günlük giriş serisi, joker envanteri, destek geçmişi ve düello (XOX) geçmişi.</td></tr>
+                <tr><td><strong>Şehir Bazlı Destek</strong></td><td>Hangi şehirde hangi takımı desteklediğiniz bilgisi. Bu veri harita üzerinde <strong>anonim ve toplu (istatistiksel)</strong> olarak gösterilir; bireysel kullanıcıyla ilişkilendirilebilir biçimde diğer kullanıcılara açıklanmaz.</td></tr>
+                <tr><td><strong>İşlem / Satın Alma</strong></td><td>Uygulama içi satın alımlara ilişkin işlem kayıtları, ürün bilgisi ve satın alma durumu. <strong>Kredi kartı / banka kartı bilgileriniz Uygulama tarafından işlenmez veya saklanmaz</strong>; ödeme tamamen Apple App Store veya Google Play üzerinden gerçekleşir.</td></tr>
+                <tr><td><strong>Cihaz ve Kullanım</strong></td><td>Cihaz modeli, işletim sistemi ve sürümü, uygulama sürümü, dil ayarı, IP adresi, anonim kullanım istatistikleri, bildirim (FCM) token'ı ve reklam tanımlayıcısı (IDFA / Reklam Kimliği — yalnızca izin verdiğinizde).</td></tr>
+                <tr><td><strong>Çökme ve Tanılama</strong></td><td>Uygulama çökmelerine ilişkin teknik tanılama verileri (hata kayıtları, cihaz durumu).</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2>3. Kişisel Verilerin İşlenme Amaçları</h2>
+        <p>Toplanan kişisel veriler aşağıdaki amaçlarla işlenir:</p>
         <ul>
-            <li>Hesap bilgileri (e-posta adresi, kullanıcı adı) - Firebase Authentication (E-posta ve Google ile giriş) aracılığıyla</li>
-            <li>Profil bilgileri (profil fotoğrafı, desteklenen takım)</li>
-            <li>Oyun verileri (quiz sonuçları, destek geçmişi, sıralama puanları, elmas bakiyesi)</li>
-            <li>Şehir bazlı destek verileri (hangi şehirde hangi takımı desteklediğiniz)</li>
-            <li>Cihaz bilgileri (cihaz türü, işletim sistemi)</li>
+            <li>Üyelik hesabının oluşturulması, kimlik doğrulama ve oturum yönetimi,</li>
+            <li>Quiz, destek sistemi, düello ve harita özelliklerinin sunulması,</li>
+            <li>Türkiye haritası üzerinde 81 ilde taraftar dağılımının anonim ve toplu olarak gösterilmesi,</li>
+            <li>Sıralama tablosu, seviye ve istatistiklerin oluşturulması,</li>
+            <li>Uygulama içi satın alımların ve sanal öğe (elmas) ekonomisinin işletilmesi,</li>
+            <li>Bildirimlerin gönderilmesi (enerji, seri, sıralama ve duyurular),</li>
+            <li>Reklam gösterimi ve uygun olduğunda reklamların kişiselleştirilmesi,</li>
+            <li>Uygulamanın iyileştirilmesi, hata giderme ve güvenliğin sağlanması,</li>
+            <li>Yasal yükümlülüklerin yerine getirilmesi ve olası uyuşmazlıklarda hakların korunması.</li>
         </ul>
 
-        <h2>2. Bilgilerin Kullanımı</h2>
-        <p>Toplanan bilgiler şu amaçlarla kullanılır:</p>
+        <h2>4. İşlemenin Hukuki Sebepleri</h2>
+        <p>Kişisel verileriniz, KVKK'nın 5. maddesinde yer alan aşağıdaki hukuki sebeplere dayanılarak işlenir:</p>
         <ul>
-            <li>Türkiye haritası üzerinde 81 ilde taraftar dağılımının gösterilmesi</li>
-            <li>Quiz oyunu ve destek sisteminin çalıştırılması</li>
-            <li>Sıralama tablosu ve kullanıcı istatistiklerinin sunulması</li>
-            <li>Uygulama hizmetlerinin iyileştirilmesi</li>
+            <li><strong>Sözleşmenin kurulması veya ifası:</strong> Üyelik ve oyun hizmetlerinin sağlanması için gerekli veriler,</li>
+            <li><strong>Hukuki yükümlülük:</strong> Mevzuattan doğan saklama ve bilgilendirme yükümlülükleri,</li>
+            <li><strong>Meşru menfaat:</strong> Güvenlik, dolandırıcılık/hile önleme ve hizmet iyileştirme,</li>
+            <li><strong>Açık rıza:</strong> Reklam kişiselleştirme ve takibe ilişkin izin (iOS'te App Tracking Transparency onayı) gibi rızaya bağlı işlemler.</li>
         </ul>
 
-        <h2>3. Bilgi Paylaşımı</h2>
-        <p>Kişisel bilgileriniz üçüncü taraflarla satılmaz. Bilgiler yalnızca aşağıdaki durumlarda paylaşılabilir:</p>
+        <h2>5. Reklamlar ve Takip Şeffaflığı</h2>
+        <p>
+            Uygulama, Google AdMob reklam hizmetini kullanır. AdMob, reklamların
+            sunulması ve ölçümlenmesi amacıyla cihaz reklam tanımlayıcılarını
+            işleyebilir. iOS cihazlarda, uygulamalar arası takip için
+            <strong>App Tracking Transparency (ATT)</strong> çerçevesinde onayınız istenir;
+            onay vermezseniz size kişiselleştirilmemiş reklamlar gösterilir.
+        </p>
+        <p>
+            Reklam kişiselleştirmesini dilediğiniz zaman cihaz ayarlarından
+            kapatabilirsiniz (iOS: <em>Ayarlar → Gizlilik ve Güvenlik → İzleme</em>;
+            Android: <em>Ayarlar → Google → Reklamlar</em>). Google'ın reklam veri
+            işleme uygulamaları hakkında ayrıntılı bilgiye
+            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google Reklam Politikaları</a>
+            üzerinden ulaşabilirsiniz.
+        </p>
+
+        <h2>6. Uygulama İçi Satın Alımlar</h2>
+        <p>
+            Uygulama içi satın alımlar RevenueCat altyapısı aracılığıyla yönetilir ve
+            ödemeler Apple App Store veya Google Play üzerinden gerçekleştirilir. Bu
+            kapsamda işlem doğrulama bilgisi işlenir; ancak ödeme aracı (kart) bilgileriniz
+            yalnızca ilgili mağaza tarafından işlenir, Uygulama bu bilgilere erişmez.
+        </p>
+
+        <h2>7. Analitik ve Çökme Raporlama</h2>
+        <p>
+            Uygulama; kullanım eğilimlerini anlamak ve hataları gidermek amacıyla
+            Firebase Analytics ve Firebase Crashlytics hizmetlerini kullanır. Bu hizmetler
+            genellikle anonimleştirilmiş veya takma adlı (pseudonymized) verilerle çalışır.
+        </p>
+
+        <h2>8. Bildirimler</h2>
+        <p>
+            Bildirim göndermek için Firebase Cloud Messaging (FCM) kullanılır ve cihazınıza
+            ait bir bildirim token'ı işlenir. Bildirimleri uygulama içindeki “Bildirimler”
+            ayarından veya cihaz ayarlarından dilediğiniz zaman kapatabilirsiniz.
+        </p>
+
+        <h2>9. Kişisel Verilerin Aktarılması</h2>
+        <p>
+            Kişisel verileriniz üçüncü kişilere pazarlama amacıyla satılmaz. Verileriniz;
+            hizmetin sağlanabilmesi için kullanılan altyapı ve hizmet sağlayıcılarla
+            (Google LLC — Firebase ve AdMob; Apple Inc.; RevenueCat) sınırlı olarak ve
+            hizmetin gerektirdiği ölçüde paylaşılır. Bu sağlayıcıların sunucuları yurt
+            dışında bulunabildiğinden, veri aktarımı KVKK'nın 9. maddesi kapsamında
+            gerçekleştirilir. Ayrıca yasal olarak zorunlu olduğu hâllerde yetkili kamu
+            kurum ve kuruluşlarıyla paylaşım yapılabilir.
+        </p>
+
+        <h2>10. Veri Saklama Süresi ve İmha</h2>
+        <p>
+            Kişisel verileriniz, işleme amacının gerektirdiği süre boyunca ve ilgili
+            mevzuatta öngörülen süreler saklanır. Hesabınızı sildiğinizde verileriniz
+            <strong>30 gün</strong> içinde kalıcı olarak silinir veya anonim hâle getirilir;
+            bu süre içinde hesabınızı geri yükleyebilirsiniz. Saklama yükümlülüğü sona eren
+            veriler silinir, yok edilir veya anonimleştirilir. Ayrıntılar için
+            <a href="account-deletion.html">Hesap Silme</a> sayfasına bakınız.
+        </p>
+
+        <h2>11. Veri Güvenliği</h2>
+        <p>
+            Verilerinizin güvenliği için endüstri standardı teknik ve idari tedbirler
+            (aktarımda şifreleme, erişim kontrolü, kimlik doğrulama) uygulanır. Bununla
+            birlikte, internet üzerinden yapılan hiçbir veri iletiminin veya elektronik
+            saklamanın %100 güvenli olmadığını hatırlatırız.
+        </p>
+
+        <h2>12. Çocukların Gizliliği</h2>
+        <p>
+            FanMap, 13 yaşın altındaki çocuklardan bilerek kişisel veri toplamaz. 13 yaşından
+            küçük bir çocuğa ait verinin işlendiğini fark etmemiz hâlinde, söz konusu veriyi
+            en kısa sürede sileriz.
+        </p>
+
+        <h2>13. İlgili Kişi Olarak Haklarınız</h2>
+        <p>KVKK'nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p>
         <ul>
-            <li>Yasal zorunluluk durumlarında</li>
-            <li>Hizmet sağlayıcılarımızla (Firebase Authentication, Firebase Firestore)</li>
-            <li>Kullanıcının açık onayı ile</li>
-        </ul>
-        <p>Şehir bazlı takım destek verileri anonim ve toplu olarak harita üzerinde diğer kullanıcılara gösterilir.</p>
-
-        <h2>4. Veri Güvenliği</h2>
-        <p>Verilerinizin güvenliği için endüstri standardı güvenlik önlemleri uygulanmaktadır. Ancak internet üzerinden hiçbir veri iletiminin %100 güvenli olmadığını hatırlatırız.</p>
-
-        <h2>5. Çocukların Gizliliği</h2>
-        <p>FanMap, 13 yaşın altındaki çocuklardan bilerek kişisel bilgi toplamaz. Eğer 13 yaşın altında bir çocuğun bilgi sağladığını fark edersek, bu bilgileri derhal sileriz.</p>
-
-        <h2>6. Haklarınız</h2>
-        <p>Aşağıdaki haklara sahipsiniz:</p>
-        <ul>
-            <li>Verilerinize erişim talep etme</li>
-            <li>Verilerinizin düzeltilmesini isteme</li>
-            <li>Verilerinizin silinmesini talep etme</li>
-            <li>Hesabınızı silme</li>
+            <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme,</li>
+            <li>İşlenmişse buna ilişkin bilgi talep etme,</li>
+            <li>İşlenme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenme,</li>
+            <li>Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme,</li>
+            <li>Eksik veya yanlış işlenmişse düzeltilmesini isteme,</li>
+            <li>Şartlar oluştuğunda silinmesini veya yok edilmesini isteme,</li>
+            <li>Düzeltme/silme işlemlerinin aktarıldığı üçüncü kişilere bildirilmesini isteme,</li>
+            <li>Otomatik sistemlerle analiz sonucu aleyhinize bir sonucun ortaya çıkmasına itiraz etme,</li>
+            <li>Hukuka aykırı işleme nedeniyle zarara uğramanız hâlinde zararın giderilmesini talep etme.</li>
         </ul>
 
-        <h2>7. İletişim</h2>
-        <p>Gizlilik politikamız hakkında sorularınız için bizimle iletişime geçebilirsiniz.</p>
+        <h2>14. Başvuru Yöntemi</h2>
+        <p>
+            Yukarıdaki haklarınıza ilişkin taleplerinizi ve gizlilikle ilgili her türlü
+            sorunuzu, uygulama içindeki iletişim/müşteri destek kanalı üzerinden
+            iletebilirsiniz. Başvurularınız, KVKK'da öngörülen süreler içinde ve en geç
+            30 gün içinde ücretsiz olarak sonuçlandırılır.
+        </p>
 
-        <hr class="lang-divider">
+        <h2>15. Değişiklikler</h2>
+        <p>
+            Bu Gizlilik Politikası zaman zaman güncellenebilir. Önemli değişiklikler
+            uygulama üzerinden veya bu sayfada duyurulur. Güncel sürüm her zaman bu sayfada
+            yayımlanan sürümdür; “Son güncelleme” tarihi değişikliğin yürürlük tarihini gösterir.
+        </p>
 
-        <h1>Privacy Policy</h1>
-        <p class="date">Last updated: April 6, 2026</p>
+        <h2>16. Yürürlük</h2>
+        <p>
+            Bu Gizlilik Politikası 24 Temmuz 2026 tarihinde yürürlüğe girmiştir.
+        </p>
 
-        <h2>1. Information We Collect</h2>
-        <p>FanMap may collect the following information:</p>
-        <ul>
-            <li>Account information (email address, username) - via Firebase Authentication (Email and Google Sign-In)</li>
-            <li>Profile information (profile photo, supported team)</li>
-            <li>Game data (quiz results, support history, ranking scores, diamond balance)</li>
-            <li>City-based support data (which team you support in which city)</li>
-            <li>Device information (device type, operating system)</li>
-        </ul>
-
-        <h2>2. How We Use Information</h2>
-        <p>Collected information is used for:</p>
-        <ul>
-            <li>Displaying fan distribution across 81 provinces on the Turkey map</li>
-            <li>Operating the quiz game and support system</li>
-            <li>Providing leaderboards and user statistics</li>
-            <li>Improving app services</li>
-        </ul>
-
-        <h2>3. Information Sharing</h2>
-        <p>Your personal information is not sold to third parties. Information may only be shared in the following cases:</p>
-        <ul>
-            <li>Legal obligations</li>
-            <li>With our service providers (Firebase Authentication, Firebase Firestore)</li>
-            <li>With the user's explicit consent</li>
-        </ul>
-        <p>City-based team support data is displayed anonymously and in aggregate to other users on the map.</p>
-
-        <h2>4. Data Security</h2>
-        <p>Industry-standard security measures are applied to protect your data. However, no data transmission over the internet is 100% secure.</p>
-
-        <h2>5. Children's Privacy</h2>
-        <p>FanMap does not knowingly collect personal information from children under the age of 13. If we become aware that a child under 13 has provided information, we will delete it immediately.</p>
-
-        <h2>6. Your Rights</h2>
-        <p>You have the following rights:</p>
-        <ul>
-            <li>Request access to your data</li>
-            <li>Request correction of your data</li>
-            <li>Request deletion of your data</li>
-            <li>Delete your account</li>
-        </ul>
-
-        <h2>7. Contact</h2>
-        <p>For questions about our privacy policy, please contact us.</p>
+        <footer>
+            <p>
+                İlgili belgeler:
+                <a href="terms-of-service.html">Kullanım Koşulları</a> ·
+                <a href="account-deletion.html">Hesap Silme</a>
+            </p>
+            <p style="margin-top:10px;">&copy; 2026 FanMap. Tüm hakları saklıdır.</p>
+        </footer>
     </div>
 </body>
 </html>

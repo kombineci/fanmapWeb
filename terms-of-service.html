@@ -4,134 +4,236 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kullanım Koşulları - FanMap</title>
+    <meta name="description" content="FanMap uygulaması kullanım koşulları ve kullanıcı sözleşmesi.">
+    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#6366f1">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0a; --card: #141414; --border: #262626;
+            --text: #c9c9c9; --heading: #ffffff; --muted: #7a7a7a;
+            --accent: #6366f1; --accent-soft: rgba(99,102,241,0.12);
+        }
+        html { scroll-behavior: smooth; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
-            line-height: 1.8;
+            background: var(--bg); color: var(--text); line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        h1 {
-            font-size: 2rem;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-        .date {
-            color: #666;
-            margin-bottom: 32px;
-            font-size: 0.9rem;
-        }
-        h2 {
-            color: #fff;
-            margin-top: 32px;
-            margin-bottom: 12px;
-            font-size: 1.3rem;
-        }
-        p, li {
-            color: #bbb;
-            margin-bottom: 12px;
-        }
-        ul {
-            padding-left: 24px;
-            margin-bottom: 12px;
-        }
-        a {
-            color: #888;
-            text-decoration: none;
-        }
-        a:hover { text-decoration: underline; }
+        .container { max-width: 820px; margin: 0 auto; padding: 40px 22px 80px; }
         .back {
-            display: inline-block;
-            margin-bottom: 24px;
-            color: #666;
-            font-size: 0.9rem;
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-bottom: 28px; color: var(--muted);
+            font-size: 0.9rem; text-decoration: none;
         }
-        .lang-divider {
-            border: none;
-            border-top: 1px solid #333;
-            margin: 48px 0;
+        .back:hover { color: var(--heading); }
+        .doc-head { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 8px; }
+        h1 { font-size: 2rem; color: var(--heading); letter-spacing: -0.02em; margin-bottom: 10px; }
+        .date { color: var(--muted); font-size: 0.9rem; }
+        .lead { color: var(--text); margin-top: 20px; }
+        h2 {
+            color: var(--heading); font-size: 1.22rem; letter-spacing: -0.01em;
+            margin-top: 40px; margin-bottom: 14px; padding-left: 14px;
+            border-left: 3px solid var(--accent);
         }
+        p, li { margin-bottom: 12px; }
+        ul, ol { padding-left: 24px; margin-bottom: 12px; }
+        li { padding-left: 4px; }
+        strong { color: #e8e8e8; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+        footer a { color: var(--muted); }
+        footer a:hover { color: var(--heading); }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back">&larr; Ana Sayfa</a>
+        <a href="index.html" class="back">← Ana Sayfa</a>
 
-        <h1>Kullanım Koşulları</h1>
-        <p class="date">Son güncelleme: 6 Nisan 2026</p>
+        <div class="doc-head">
+            <h1>Kullanım Koşulları ve Kullanıcı Sözleşmesi</h1>
+            <p class="date">Son güncelleme: 24 Temmuz 2026</p>
+            <p class="lead">
+                Bu Kullanıcı Sözleşmesi (“Sözleşme”), <strong>FanMap</strong> mobil
+                uygulamasının (“Uygulama”) kullanım koşullarını düzenler. Uygulamayı
+                indirerek, hesap oluşturarak veya kullanarak bu Sözleşme'yi ve
+                <a href="privacy-policy.html">Gizlilik Politikası</a>'nı okuduğunuzu,
+                anladığınızı ve kabul ettiğinizi beyan edersiniz. Koşulları kabul
+                etmiyorsanız lütfen Uygulamayı kullanmayınız.
+            </p>
+        </div>
 
-        <h2>1. Kabul</h2>
-        <p>FanMap uygulamasını kullanarak bu kullanım koşullarını kabul etmiş olursunuz. Bu koşulları kabul etmiyorsanız, lütfen uygulamayı kullanmayınız.</p>
+        <h2>1. Taraflar ve Geliştirici Kimliği</h2>
+        <p>
+            Bu uygulama bireysel yazılım geliştiricileri tarafından yönetilmektedir.
+            iOS sürümü <strong>Özgün Can Beydili</strong>, Android sürümü ise
+            <strong>Mustafa Yalçın Canbay</strong> adına yayınlanmaktadır (birlikte
+            “Geliştirici”). Bu Sözleşme, Geliştirici ile Uygulamayı kullanan gerçek kişi
+            (“Kullanıcı”) arasında kurulur.
+        </p>
 
-        <h2>2. Hizmet Tanımı</h2>
-        <p>FanMap, Türkiye haritası üzerinde 81 ilde futbol taraftarlarının dağılımını gösteren bir Android oyun uygulamasıdır. Kullanıcılar şehirlerde takımlarını destekleyebilir, quiz çözebilir ve sıralamada yükselebilir.</p>
-
-        <h2>3. Kullanıcı Yükümlülükleri</h2>
-        <p>Kullanıcılar aşağıdaki kurallara uymayı kabul eder:</p>
+        <h2>2. Tanımlar</h2>
         <ul>
-            <li>Doğru ve güncel bilgiler sağlamak</li>
-            <li>Hesap güvenliğini korumak</li>
-            <li>Quiz sorularında hile yapmamak, otomasyon araçları kullanmamak</li>
-            <li>Diğer kullanıcılara saygılı davranmak</li>
-            <li>Nefret söylemi, şiddet veya taciz içeren davranışlarda bulunmamak</li>
+            <li><strong>Uygulama:</strong> FanMap adlı mobil oyun uygulaması ve tüm özellikleri.</li>
+            <li><strong>Kullanıcı:</strong> Uygulamayı indiren ve kullanan gerçek kişi.</li>
+            <li><strong>Hesap:</strong> Kullanıcının kimlik doğrulaması ile oluşturduğu üyelik.</li>
+            <li><strong>Sanal Öğe:</strong> Elmas başta olmak üzere Uygulama içindeki dijital öğeler.</li>
         </ul>
 
-        <h2>4. Hesap</h2>
-        <p>Uygulamayı kullanmak için Firebase Authentication üzerinden e-posta veya Google hesabınızla kayıt olmanız gerekmektedir. Hesabınızın güvenliğinden siz sorumlusunuz. Hesabınızı istediğiniz zaman silebilirsiniz.</p>
+        <h2>3. Hizmetin Tanımı</h2>
+        <p>
+            FanMap, Türkiye haritası üzerinde 81 ilde futbol taraftarlarının dağılımını
+            gösteren, iOS ve Android platformlarında sunulan bir mobil oyun uygulamasıdır.
+            Kullanıcılar; futbol soruları içeren quizleri çözebilir, şehirlerinde takımlarını
+            destekleyebilir, düello (XOX) oynayabilir, seviye atlayabilir ve sıralamada
+            yükselebilir. Geliştirici, Uygulamanın içerik ve özelliklerini önceden bildirimde
+            bulunmaksızın güncelleme, değiştirme veya sonlandırma hakkını saklı tutar.
+        </p>
 
-        <h2>5. Oyun İçi Ekonomi</h2>
-        <p>Uygulama içinde elmas gibi sanal öğeler bulunmaktadır. Bu öğeler herhangi bir gerçek para değerine sahip değildir ve iade edilemez. FanMap, oyun dengesini korumak adına sanal öğelerin miktarını veya değerini değiştirme hakkını saklı tutar.</p>
+        <h2>4. Üyelik ve Hesap</h2>
+        <p>
+            Uygulamayı kullanmak için e-posta, Google veya Apple hesabınız üzerinden
+            kimlik doğrulaması yaparak kayıt olmanız gerekir. Kullanıcı, hesap bilgilerinin
+            gizliliğinden ve hesabı üzerinden gerçekleştirilen tüm işlemlerden bizzat
+            sorumludur. Kullanıcı, en az 13 yaşında olduğunu; 18 yaşından küçükse yasal
+            temsilcisinin izniyle Uygulamayı kullandığını kabul eder. Verilen bilgilerin
+            doğru ve güncel olması esastır.
+        </p>
 
-        <h2>6. Sorumluluk Sınırlaması</h2>
-        <p>FanMap, uygulamanın kesintisiz veya hatasız çalışacağını garanti etmez. Uygulama "olduğu gibi" sunulmaktadır.</p>
-
-        <h2>7. Değişiklikler</h2>
-        <p>Bu koşulları herhangi bir zamanda değiştirme hakkımızı saklı tutarız. Değişiklikler uygulama üzerinden bildirilecektir.</p>
-
-        <h2>8. İletişim</h2>
-        <p>Sorularınız için bizimle iletişime geçebilirsiniz.</p>
-
-        <hr class="lang-divider">
-
-        <h1>Terms of Service</h1>
-        <p class="date">Last updated: April 6, 2026</p>
-
-        <h2>1. Acceptance</h2>
-        <p>By using the FanMap application, you agree to these terms of service. If you do not accept these terms, please do not use the application.</p>
-
-        <h2>2. Service Description</h2>
-        <p>FanMap is an Android game application that displays the distribution of football fans across 81 provinces on the Turkey map. Users can support their teams in cities, solve quizzes, and climb the leaderboard.</p>
-
-        <h2>3. User Obligations</h2>
-        <p>Users agree to the following rules:</p>
+        <h2>5. Kullanıcı Yükümlülükleri ve Yasak Davranışlar</h2>
+        <p>Kullanıcı, Uygulamayı kullanırken aşağıdaki kurallara uymayı kabul eder:</p>
         <ul>
-            <li>Provide accurate and up-to-date information</li>
-            <li>Maintain account security</li>
-            <li>Not cheat in quizzes or use automation tools</li>
-            <li>Treat other users with respect</li>
-            <li>Not engage in hate speech, violence, or harassment</li>
+            <li>Doğru ve güncel bilgi sağlamak, hesap güvenliğini korumak,</li>
+            <li>Quizlerde hile yapmamak; bot, otomasyon, hile yazılımı veya benzeri araçlar kullanmamak,</li>
+            <li>Haksız avantaj sağlamak amacıyla birden fazla sahte hesap oluşturmamak,</li>
+            <li>Diğer kullanıcılara saygılı davranmak; nefret söylemi, şiddet, taciz veya hakaret içeren davranışlarda bulunmamak,</li>
+            <li>Uygulamanın güvenliğini tehlikeye atacak, tersine mühendislik yapacak veya sistemlere yetkisiz erişim sağlayacak eylemlerde bulunmamak,</li>
+            <li>Yürürlükteki mevzuata ve üçüncü kişilerin haklarına aykırı davranmamak.</li>
         </ul>
+        <p>
+            Bu kurallara aykırılık hâlinde Geliştirici, ilgili hesabı geçici veya kalıcı
+            olarak askıya alma ya da sonlandırma hakkına sahiptir.
+        </p>
 
-        <h2>4. Account</h2>
-        <p>You need to register via Firebase Authentication using your email or Google account to use the application. You are responsible for the security of your account. You can delete your account at any time.</p>
+        <h2>6. Fikri Mülkiyet Hakları</h2>
+        <p>
+            Uygulamaya ait tüm yazılım, tasarım, logo, metin, görsel ve içerikler üzerindeki
+            fikri ve sınai mülkiyet hakları Geliştirici'ye veya ilgili hak sahiplerine aittir.
+            Kullanıcıya, yalnızca kişisel ve ticari olmayan kullanım için sınırlı, münhasır
+            olmayan ve devredilemez bir kullanım hakkı tanınır. İçeriklerin izinsiz kopyalanması,
+            çoğaltılması veya dağıtılması yasaktır. Uygulama içinde yer alan takım isim ve
+            amblemleri ilgili kulüplere ait olup yalnızca tanıtım/bilgilendirme amacıyla kullanılır.
+        </p>
 
-        <h2>5. In-App Economy</h2>
-        <p>The application contains virtual items such as diamonds. These items have no real monetary value and are non-refundable. FanMap reserves the right to modify the quantity or value of virtual items to maintain game balance.</p>
+        <h2>7. Sanal Öğeler ve Uygulama İçi Satın Alımlar</h2>
+        <p>
+            Uygulama içinde elmas gibi sanal öğeler bulunur. Bu öğeler yalnızca Uygulama
+            içinde kullanılabilir; <strong>gerçek para karşılığı bir değeri yoktur</strong>,
+            gerçek paraya çevrilemez ve Uygulama dışında devredilemez. Geliştirici, oyun
+            dengesini korumak amacıyla sanal öğelerin miktarını, fiyatını veya değerini
+            değiştirme hakkını saklı tutar.
+        </p>
+        <p>
+            Uygulama içi satın alımlar Apple App Store veya Google Play üzerinden
+            gerçekleştirilir ve ilgili mağazanın kuralları ile ödeme koşullarına tabidir.
+            İade talepleri, satın alımın yapıldığı mağazanın (Apple/Google) iade
+            politikaları çerçevesinde değerlendirilir. Sanal öğeler, teslimi anında ifa edilen
+            dijital içerik niteliğinde olup, tüketici mevzuatındaki istisnalar saklıdır.
+        </p>
 
-        <h2>6. Limitation of Liability</h2>
-        <p>FanMap does not guarantee that the application will operate without interruption or error. The application is provided "as is".</p>
+        <h2>8. Reklamlar</h2>
+        <p>
+            Uygulama, üçüncü taraf reklam ağları (Google AdMob) aracılığıyla reklam
+            içerebilir. Reklamların işlenmesi ve kişiselleştirilmesine ilişkin ayrıntılar
+            <a href="privacy-policy.html">Gizlilik Politikası</a>'nda açıklanmıştır.
+        </p>
 
-        <h2>7. Changes</h2>
-        <p>We reserve the right to modify these terms at any time. Changes will be communicated through the application.</p>
+        <h2>9. Hizmette Değişiklik ve Kesinti</h2>
+        <p>
+            Geliştirici, Uygulamanın tamamını veya bir kısmını önceden bildirimde bulunmaksızın
+            değiştirebilir, askıya alabilir veya sonlandırabilir. Bakım, güncelleme, teknik
+            arıza veya Geliştirici'nin kontrolü dışındaki nedenlerle hizmette geçici kesintiler
+            yaşanabilir.
+        </p>
 
-        <h2>8. Contact</h2>
-        <p>For questions, please contact us.</p>
+        <h2>10. Sorumluluğun Sınırlandırılması</h2>
+        <p>
+            Uygulama “olduğu gibi” ve “mevcut hâliyle” sunulmaktadır. Geliştirici, Uygulamanın
+            kesintisiz, hatasız veya güvenli çalışacağını garanti etmez. Yürürlükteki mevzuatın
+            izin verdiği azami ölçüde, Uygulamanın kullanımından veya kullanılamamasından
+            doğabilecek dolaylı, arızi veya sonuç niteliğindeki zararlardan Geliştirici sorumlu
+            tutulamaz. Bu madde, tüketici mevzuatından doğan devredilemez hakları ortadan kaldırmaz.
+        </p>
+
+        <h2>11. Hesabın Askıya Alınması ve Sonlandırılması</h2>
+        <p>
+            Bu Sözleşme'ye veya yürürlükteki mevzuata aykırı davranan Kullanıcıların hesapları,
+            önceden bildirimde bulunularak veya bulunulmaksızın geçici olarak askıya alınabilir
+            ya da kalıcı olarak kapatılabilir. Kullanıcı da hesabını dilediği zaman silebilir.
+        </p>
+
+        <h2>12. Hesap Silme</h2>
+        <p>
+            Kullanıcı, hesabını Uygulama içindeki “Hesabı Sil” seçeneğinden silebilir. Hesap
+            silindiğinde veriler, <a href="account-deletion.html">Hesap Silme</a> sayfasında
+            açıklanan süre ve esaslar çerçevesinde kalıcı olarak silinir.
+        </p>
+
+        <h2>13. Kişisel Verilerin Korunması</h2>
+        <p>
+            Kişisel verilerinizin işlenmesine ilişkin ayrıntılar, KVKK'ya uygun olarak
+            hazırlanan <a href="privacy-policy.html">Gizlilik Politikası ve KVKK Aydınlatma
+            Metni</a>'nde yer alır. Bu Sözleşme'yi kabul ederek söz konusu metni de okuduğunuzu
+            kabul edersiniz.
+        </p>
+
+        <h2>14. Sözleşme Değişiklikleri</h2>
+        <p>
+            Geliştirici, bu Sözleşme'yi dilediği zaman güncelleme hakkını saklı tutar.
+            Değişiklikler Uygulama üzerinden veya bu sayfada yayımlandığı anda yürürlüğe girer.
+            Değişikliklerin ardından Uygulamayı kullanmaya devam etmeniz, güncel koşulları kabul
+            ettiğiniz anlamına gelir.
+        </p>
+
+        <h2>15. Mücbir Sebep</h2>
+        <p>
+            Doğal afet, yangın, salgın, siber saldırı, altyapı ve iletişim kesintileri, resmi
+            makam kararları gibi Geliştirici'nin makul kontrolü dışındaki hâllerde ortaya çıkan
+            yükümlülük ihlallerinden Geliştirici sorumlu tutulamaz.
+        </p>
+
+        <h2>16. Uygulanacak Hukuk ve Yetkili Mahkeme</h2>
+        <p>
+            Bu Sözleşme Türk Hukuku'na tabidir. İşbu Sözleşme'den doğabilecek uyuşmazlıkların
+            çözümünde <strong>Gaziantep Mahkemeleri ve İcra Daireleri</strong> yetkilidir.
+            Tüketici sıfatını haiz Kullanıcılar bakımından, 6502 sayılı Tüketicinin Korunması
+            Hakkında Kanun uyarınca yetkili tüketici hakem heyetleri ve tüketici mahkemelerine
+            başvuru hakkı saklıdır.
+        </p>
+
+        <h2>17. İletişim</h2>
+        <p>
+            Bu Sözleşme'ye ilişkin sorularınızı Uygulama içindeki iletişim/müşteri destek
+            kanalı üzerinden iletebilirsiniz.
+        </p>
+
+        <h2>18. Yürürlük</h2>
+        <p>
+            18 maddeden oluşan bu Sözleşme, Kullanıcı'nın Uygulamayı kullanmaya başlamasıyla
+            yürürlüğe girer ve hesabın kapatılmasına kadar geçerliliğini korur.
+        </p>
+
+        <footer>
+            <p>
+                İlgili belgeler:
+                <a href="privacy-policy.html">Gizlilik Politikası</a> ·
+                <a href="account-deletion.html">Hesap Silme</a>
+            </p>
+            <p style="margin-top:10px;">&copy; 2026 FanMap. Tüm hakları saklıdır.</p>
+        </footer>
     </div>
 </body>
 </html>
