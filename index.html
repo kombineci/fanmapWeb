@@ -135,27 +135,21 @@
 
         /* hero visual: city map panel */
         .map-panel {
-            position: relative; background: linear-gradient(160deg, #1b1c33, #24264a);
-            border-radius: 28px; padding: 26px; box-shadow: 0 30px 60px rgba(20,21,42,.28);
-            border: 1px solid rgba(255,255,255,.08);
+            position: relative; background: #ffffff;
+            border-radius: 28px; padding: 22px; box-shadow: 0 30px 60px rgba(80,70,229,.16);
+            border: 1px solid var(--line);
         }
-        .map-panel .mp-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-        .map-panel .mp-title { color: #fff; font-family: var(--font); font-weight: 600; font-size: .95rem; }
-        .map-panel .mp-live { display: inline-flex; align-items: center; gap: 6px; color: #cbd5e1; font-size: .72rem; }
-        .map-panel .mp-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); animation: blink 1.6s infinite; }
-        .dots { display: grid; grid-template-columns: repeat(9, 1fr); gap: 7px; }
-        .dots i { aspect-ratio: 1; border-radius: 6px; background: #33355e; animation: pop .5s backwards; }
-        @keyframes pop { from { transform: scale(.2); opacity: 0; } }
-        .float-chip {
-            position: absolute; background: #fff; border-radius: 14px; padding: 10px 14px;
-            box-shadow: 0 14px 30px rgba(20,21,42,.22); display: flex; align-items: center; gap: 9px;
-            font-weight: 600; font-size: .82rem; animation: bob 4s ease-in-out infinite;
+        .map-panel .mp-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+        .map-panel .mp-title { color: var(--ink); font-family: var(--font); font-weight: 600; font-size: .95rem; }
+        .map-panel .mp-live { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: .72rem; font-weight: 600; }
+        .map-panel .mp-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 3px rgba(132,204,22,.2); animation: blink 1.6s infinite; }
+        .trmap { width: 100%; margin-top: 6px; }
+        .trmap svg { width: 100%; height: auto; display: block; overflow: visible; }
+        .trmap svg path.prov {
+            fill: #e2e2ee;
+            stroke: rgba(20,21,42,.12); stroke-width: .5;
+            transition: fill 1s ease;
         }
-        .float-chip .ic { width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; font-size: .95rem; }
-        .fc-1 { top: -16px; right: -14px; }
-        .fc-2 { bottom: -18px; left: -16px; animation-delay: -2s; }
-        @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-        @media (max-width: 480px) { .fc-1 { right: 6px; } .fc-2 { left: 6px; } }
 
         /* ---------------- DUEL BAND ---------------- */
         .duels { background: var(--ink); color: #fff; padding: 96px 0; position: relative; overflow: hidden; }
@@ -243,15 +237,21 @@
 
         /* ---------------- CTA ---------------- */
         .cta {
-            margin: 0 24px 90px; border-radius: 32px; padding: 72px 32px; text-align: center;
-            background: linear-gradient(120deg, var(--indigo-d), var(--indigo) 45%, var(--cyan));
+            margin: 0 24px 90px; border-radius: 32px; padding: 84px 32px; text-align: center;
+            background: linear-gradient(120deg, var(--indigo-d), var(--indigo) 38%, var(--cyan) 72%, var(--indigo-d));
+            background-size: 220% 220%; animation: ctaShift 14s ease infinite;
             color: #fff; position: relative; overflow: hidden;
         }
-        .cta::after { content:""; position:absolute; inset:0; background: radial-gradient(500px 240px at 80% 120%, rgba(249,115,22,.4), transparent 60%); }
+        @keyframes ctaShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .cta::after { content:""; position:absolute; inset:0; background:
+            radial-gradient(460px 240px at 82% 118%, rgba(249,115,22,.45), transparent 60%),
+            radial-gradient(420px 220px at 12% -10%, rgba(244,63,94,.35), transparent 60%); }
         .cta > * { position: relative; z-index: 1; }
-        .cta h2 { font-size: clamp(1.9rem, 4.4vw, 2.9rem); letter-spacing: -.02em; margin-bottom: 14px; }
-        .cta p { color: rgba(255,255,255,.9); max-width: 480px; margin: 0 auto 30px; font-size: 1.06rem; }
+        .cta-eyebrow { display:inline-block; font-family:var(--font); font-weight:700; letter-spacing:.18em; font-size:.8rem; color:rgba(255,255,255,.85); margin-bottom:16px; }
+        .cta h2 { font-size: clamp(2rem, 4.8vw, 3.1rem); letter-spacing: -.02em; margin-bottom: 16px; line-height: 1.08; }
+        .cta p { color: rgba(255,255,255,.92); max-width: 520px; margin: 0 auto 32px; font-size: 1.08rem; }
         .cta .cta-row { justify-content: center; }
+        .cta-soon { margin-top: 24px !important; margin-bottom: 0 !important; font-size: .92rem; color: rgba(255,255,255,.9); font-weight: 600; }
         .cta .store { background: #fff; color: var(--ink); }
         .cta .store.soon { background: rgba(255,255,255,.14); color: #fff; border-color: rgba(255,255,255,.3); }
         .cta .store.soon small { color: #fff; }
@@ -265,7 +265,7 @@
         .copy { color: #9c9db4; font-size: .84rem; margin-top: 18px; }
 
         @media (prefers-reduced-motion: reduce) {
-            .blob, .float-chip, .pill .dot, .mp-live i, .hero h1 .grad, .count-ring .num::after { animation: none !important; }
+            .blob, .pill .dot, .mp-live i, .hero h1 .grad, .count-ring .num::after, .cta { animation: none !important; }
             .reveal { opacity: 1; transform: none; }
         }
     </style>
@@ -289,10 +289,9 @@
         <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
         <div class="wrap hero-grid">
             <div>
-                <span class="pill"><span class="dot"></span> Canlı 1v1 düellolar &middot; 81 ilde taraftar mücadelesi</span>
-                <h1>Bilgini kanıtla,<br><span class="grad">şehrini boya.</span></h1>
-                <p class="sub">FanMap; gerçek zamanlı <b>XOX</b> ve <b>321</b> düellolarıyla rakiplerini yen, futbol quizlerini çöz ve Türkiye haritasında takımının rengini büyüt.</p>
-                <div class="cta-row" id="indir">
+                <h1>Bilgini kanıtla,<br><span class="grad">şehrini fethet.</span></h1>
+                <p class="sub">FanMap; gerçek zamanlı <b>XOX</b> ve <b>321</b> düellolarıyla rakiplerini yen, futbol quizlerini çöz ve Türkiye haritasını takımının rengine boya.</p>
+                <div class="cta-row">
                     <span class="store soon" role="button" aria-disabled="true">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.03-2.83 2.31-4.19 2.42-4.25-1.32-1.93-3.38-2.2-4.11-2.23-1.75-.18-3.41 1.03-4.29 1.03-.88 0-2.25-1.01-3.7-.98-1.9.03-3.66 1.11-4.64 2.81-1.98 3.43-.51 8.5 1.42 11.28.94 1.36 2.06 2.89 3.53 2.83 1.42-.06 1.96-.92 3.67-.92 1.71 0 2.2.92 3.7.89 1.53-.03 2.5-1.39 3.43-2.76 1.08-1.58 1.53-3.11 1.55-3.19-.03-.02-2.98-1.14-3.01-4.53zM14.28 3.9c.78-.94 1.3-2.26 1.16-3.57-1.12.05-2.48.75-3.28 1.69-.72.83-1.35 2.16-1.18 3.43 1.25.1 2.52-.63 3.3-1.55z"/></svg>
                         <span><small>Çok Yakında</small><b>App Store</b></span>
@@ -305,18 +304,16 @@
                 <div class="stat-row">
                     <div class="stat"><b>81</b><span>İl haritası</span></div>
                     <div class="stat"><b>2</b><span>Canlı düello modu</span></div>
-                    <div class="stat"><b>1000+</b><span>Futbol sorusu</span></div>
+                    <div class="stat"><b>10.000+</b><span>Futbol sorusu</span></div>
                 </div>
             </div>
 
             <div class="map-panel reveal">
                 <div class="mp-top">
                     <span class="mp-title">🗺️ Taraftar Haritası</span>
-                    <span class="mp-live"><i></i> canlı</span>
+                    <span class="mp-live" id="mapMeta"></span>
                 </div>
-                <div class="dots" id="dots"></div>
-                <div class="float-chip fc-1"><span class="ic" style="background:rgba(6,182,212,.15);color:#06b6d4">⚔️</span> XOX kazandın!</div>
-                <div class="float-chip fc-2"><span class="ic" style="background:rgba(249,115,22,.15);color:#f97316">💎</span> +25 elmas</div>
+                <div class="trmap" id="trmap"></div>
             </div>
         </div>
     </header>
@@ -403,9 +400,10 @@
     </section>
 
     <!-- CTA -->
-    <div class="cta reveal">
-        <h2>Arena seni bekliyor</h2>
-        <p>FanMap'i indir, ilk düellona gir ve şehrinin rengini belirle.</p>
+    <div class="cta reveal" id="indir">
+        <span class="cta-eyebrow">HAZIR MISIN?</span>
+        <h2>Şehrin hangi renge boyanacak?</h2>
+        <p>XOX ve 321 düellolarında rakiplerini yen, quizleri çöz ve ilini takımının rengine boya. Türkiye'nin taraftar haritasındaki yerini kap.</p>
         <div class="cta-row">
             <span class="store soon" role="button" aria-disabled="true">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.03-2.83 2.31-4.19 2.42-4.25-1.32-1.93-3.38-2.2-4.11-2.23-1.75-.18-3.41 1.03-4.29 1.03-.88 0-2.25-1.01-3.7-.98-1.9.03-3.66 1.11-4.64 2.81-1.98 3.43-.51 8.5 1.42 11.28.94 1.36 2.06 2.89 3.53 2.83 1.42-.06 1.96-.92 3.67-.92 1.71 0 2.2.92 3.7.89 1.53-.03 2.5-1.39 3.43-2.76 1.08-1.58 1.53-3.11 1.55-3.19-.03-.02-2.98-1.14-3.01-4.53zM14.28 3.9c.78-.94 1.3-2.26 1.16-3.57-1.12.05-2.48.75-3.28 1.69-.72.83-1.35 2.16-1.18 3.43 1.25.1 2.52-.63 3.3-1.55z"/></svg>
@@ -416,6 +414,7 @@
                 <span><small>Çok Yakında</small><b>Google Play</b></span>
             </span>
         </div>
+        <p class="cta-soon">📲 App Store &amp; Google Play'de çok yakında</p>
     </div>
 
     <!-- FOOTER -->
@@ -434,25 +433,70 @@
     </footer>
 
     <script>
-        // City-dots grid: fill with team-ish colors, staggered
+        // Türkiye haritası: gerçek zamanlı Firestore verisiyle boya
+        // (cities koleksiyonu — public read; her ilin dominant takım rengi)
         (function () {
-            var colors = ['#6366f1','#06b6d4','#f97316','#f43f5e','#84cc16','#eab308','#8b5cf6','#ef4444','#14b8a6'];
-            var grid = document.getElementById('dots');
-            if (!grid) return;
-            var n = 63; // 9 x 7
-            for (var i = 0; i < n; i++) {
-                var d = document.createElement('i');
-                d.style.animationDelay = (i * 0.02) + 's';
-                if (Math.random() > 0.32) d.style.background = colors[Math.floor(Math.random() * colors.length)];
-                grid.appendChild(d);
+            var host = document.getElementById('trmap');
+            if (!host) return;
+            var API = 'https://firestore.googleapis.com/v1/projects/fanmap-481ea/databases/(default)/documents/cities?pageSize=100';
+            var CACHE_KEY = 'fanmap_map_v1';
+            var TTL = 24 * 60 * 60 * 1000;   // 24 saat — maliyeti günde 1 okumayla sınırlar
+            var mapSvg = null;
+
+            // Bir ile ait TÜM path'leri boya — İstanbul gibi iki yakalı / çok parçalı iller dahil
+            // (İstanbul SVG'de istanbul + istanbul-asya + istanbul-avrupa olarak 3 grup, hepsi kod 34)
+            function paintCode(code, color) {
+                if (!mapSvg) return;
+                mapSvg.querySelectorAll('[data-city-code="' + code + '"] path').forEach(function (p) { p.style.fill = color; });
             }
-            // occasionally recolor a random dot -> "canlı" feel
-            setInterval(function () {
-                var cells = grid.children;
-                var c = cells[Math.floor(Math.random() * cells.length)];
-                c.style.transition = 'background .6s';
-                c.style.background = Math.random() > 0.3 ? colors[Math.floor(Math.random() * colors.length)] : '#33355e';
-            }, 700);
+            function applyMap(colors, stagger) {
+                Object.keys(colors).forEach(function (code, i) {
+                    if (stagger) setTimeout(function () { paintCode(code, colors[code]); }, i * 14);
+                    else paintCode(code, colors[code]);
+                });
+            }
+            function setMeta(ts) {
+                var el = document.getElementById('mapMeta');
+                if (!el) return;
+                var d = new Date(ts);
+                var s = ('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear();
+                el.textContent = '📅 ' + s + ' verileri';
+            }
+            function parseColors(data) {
+                var colors = {};
+                (data.documents || []).forEach(function (doc) {
+                    var code = doc.name.split('/').pop();
+                    var f = doc.fields || {};
+                    var dom = f.dominant && f.dominant.mapValue && f.dominant.mapValue.fields;
+                    var hex = dom && dom.primaryColor && dom.primaryColor.stringValue;
+                    colors[code] = (hex && hex.toUpperCase() !== '808080') ? ('#' + hex) : '';
+                });
+                return colors;
+            }
+
+            fetch('turkey-map.svg').then(function (r) { return r.text(); }).then(function (txt) {
+                host.innerHTML = txt;
+                mapSvg = host.querySelector('svg');
+                if (!mapSvg) return;
+
+                // 24 saatlik önbellek: taze ise Firestore'a HİÇ gidilmez (maliyet yok)
+                var cached = null;
+                try { cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null'); } catch (e) {}
+                if (cached && cached.colors && (Date.now() - cached.ts) < TTL) {
+                    applyMap(cached.colors, true);
+                    setMeta(cached.ts);
+                    return;
+                }
+                // Önbellek yok/eski → günde bir kez Firestore'dan çek ve sakla
+                fetch(API).then(function (r) { return r.json(); }).then(function (data) {
+                    var colors = parseColors(data), ts = Date.now();
+                    applyMap(colors, true);
+                    setMeta(ts);
+                    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: ts, colors: colors })); } catch (e) {}
+                }).catch(function () {
+                    if (cached && cached.colors) { applyMap(cached.colors, true); setMeta(cached.ts); }
+                });
+            }).catch(function () { /* file:// önizlemede fetch engellenebilir */ });
         })();
 
         // Reveal on scroll
