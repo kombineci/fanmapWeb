@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["B49PSCAK54.com.ozguncanbeydili.FanMapApp"],
+        "components": [
+          {
+            "/": "/arkadas/*",
+            "comment": "Arkadas davet baglantisi — /arkadas/<kullanici-adi>"
+          }
+        ]
+      }
+    ]
+  }
+}
