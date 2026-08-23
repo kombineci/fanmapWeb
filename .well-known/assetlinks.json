@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.yalcincanbay.fanmap",
+      "sha256_cert_fingerprints": [
+        "E1:4F:B6:DF:96:3C:77:0A:64:69:EC:5B:88:CA:A0:E3:89:CA:D7:3A:A2:FF:FC:85:59:DB:97:83:91:D4:AE:75"
+      ]
+    }
+  }
+]
