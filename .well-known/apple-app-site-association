@@ -7,6 +7,10 @@
           {
             "/": "/arkadas/*",
             "comment": "Arkadas davet baglantisi — /arkadas/<kullanici-adi>"
+          },
+          {
+            "/": "/klan/*",
+            "comment": "Grup paylasim baglantisi — /klan/<ETIKET>"
           }
         ]
       }
