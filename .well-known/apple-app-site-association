@@ -11,6 +11,10 @@
           {
             "/": "/klan/*",
             "comment": "Grup paylasim baglantisi — /klan/<ETIKET>"
+          },
+          {
+            "/": "/davet/*",
+            "comment": "Uygulama davet baglantisi — /davet/<KOD>"
           }
         ]
       }
