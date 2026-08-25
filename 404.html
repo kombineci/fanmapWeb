@@ -4,9 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FanMap</title>
-    <meta name="description" content="FanMap arkadaş daveti.">
+
+    <!--
+      🔴 AÇIKLAMA YOLA ÖZEL OLAMAZ. Bu tek dosya ÜÇ yolu birden karşılıyor
+      (/arkadas/<ad>, /klan/<ETİKET>, /davet/<KOD>) ve hangisinin açıldığını yalnız
+      JavaScript biliyor — önizlemeyi çeken bot JS çalıştırmıyor. Eskiden burada
+      "FanMap arkadaş daveti." yazıyordu; grup ya da davet bağlantısında bu YALANDI.
+      Metin üçünde de doğru olacak kadar genel: Android v1.26 raporu §4.1'in ricası.
+    -->
+    <meta name="description" content="FanMap — Türkiye'nin taraftar haritası. Bağlantıyı uygulamada aç.">
     <meta name="theme-color" content="#6366f1">
     <meta name="robots" content="noindex">
+
+    <!--
+      Paylaşım kartı (Open Graph + Twitter).
+      Üç yol da bir DAVET mekanizması; önizlemesiz bağlantı "neye tıklıyorum"
+      sorusunu cevapsız bırakıp dönüşümü düşürüyor.
+
+      ⚠️ `og:url` BİLEREK YOK. Sabit bir değer (ör. ana sayfa) yazılsaydı kart
+      paylaşılan derin bağlantıya değil ana sayfaya işaret ederdi; boş bırakılınca
+      bot istenen adresi kullanıyor.
+
+      ⚠️ `og:image` MUTLAK adres olmalı — botlar göreli yolu çözmüyor.
+
+      🔴 BİLİNEN SINIR: GitHub Pages bu üç yolu **HTTP 404** ile sunuyor (kontrol:
+      `curl -o /dev/null -w '%{http_code}' https://fanmaptr.com/klan/TEST` → 404).
+      Önizleme botlarının çoğu 404 gövdesini ayrıştırmıyor, yani bu etiketler her
+      platformda kart üretmeyebilir. Etiketlerin burada olması yine de doğru ve
+      bedelsiz; kartın GARANTİ olması için yolun 200 dönmesi gerekiyor ve bu bir
+      barındırma kararı (bkz. iOS→Android v1.24 raporu §4.1).
+    -->
+    <meta property="og:site_name" content="FanMap">
+    <meta property="og:title" content="FanMap — Türkiye'nin Taraftar Haritası">
+    <meta property="og:description" content="Gerçek zamanlı XOX & 321 düelloları, futbol quizleri ve 81 ilde taraftar mücadelesi.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://fanmaptr.com/icon-512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:locale" content="tr_TR">
+    <!-- Kare amblem: `summary_large_image` kırpardı, `summary` doğru ölçü. -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="FanMap — Türkiye'nin Taraftar Haritası">
+    <meta name="twitter:description" content="Gerçek zamanlı XOX & 321 düelloları, futbol quizleri ve 81 ilde taraftar mücadelesi.">
+    <meta name="twitter:image" content="https://fanmaptr.com/icon-512.png">
 
     <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16">
@@ -329,6 +369,24 @@
             return;
         }
 
+        // ── Arkadaş daveti — İKİ biçim ──────────────────────────────────────
+        //
+        // Yeni (v1.27): /arkadas/k/<KOD>   — davet kodu taşıyor
+        // Eski:         /arkadas/<ad>      — yayınlanmış bağlantılar geriye dönük
+        //                                     düzelmiyor, tanımaya devam ediyoruz
+        //
+        // 🔴 Neden kod: kullanıcı adı artık değişebiliyor ve eski ad ANINDA serbest
+        // kalıyor. Adı taşıyan bir bağlantı, o adı başkası aldığında sessizce
+        // YANLIŞ KİŞİYE gidiyordu.
+        //
+        // ⚠️ Kod dalı ÖNCE denenmeli: `/arkadas/k/K7M2QX` eski desene de uyuyor
+        // gibi görünmüyor (iki parça) ama sıra değişirse ileride uyabilir.
+        var km = /^\/arkadas\/k\/([^\/?#]+)\/?$/i.exec(location.pathname);
+        if (km && km[1]) {
+            showFriendByCode(km[1]);
+            return;
+        }
+
         var m = /^\/arkadas\/([^\/?#]+)\/?$/i.exec(location.pathname);
         var raw = m && m[1];
         if (!raw) {
@@ -401,6 +459,37 @@
         // Etiket uygulamada `A-Z0-9`, 2–5 karakter (`ClanValidator`). Buradaki
         // temizlik onun GEVŞEK karşılığı: geçersizse kart hiç gösterilmiyor,
         // "boş bir grup sayfası" yerine dürüstçe 404.
+        // Davet kodlu arkadaş bağlantısı — /arkadas/k/<KOD>
+        //
+        // ⚠️ Sayfa kodun SAHİBİNİ gösteremiyor: kod→uid eşlemesi (`referralCodes`)
+        // istemciye tamamen kapalı ve öyle kalmalı — okunabilir olsaydı bütün kod
+        // uzayı taranıp her kullanıcının kodu ve uid'i dökülebilirdi. Bu yüzden
+        // kart adı değil, yalnız "uygulamada aç" yolunu sunuyor; adı uygulama
+        // sunucudan çözüp gösteriyor.
+        function showFriendByCode(rawCode) {
+            var code = String(rawCode || '').trim().toUpperCase();
+            // Sunucudaki `referralLib.isValidCode` ile aynı ölçüt: 6 karakter,
+            // alfabede I/O/0/1 YOK (sesli paylaşımda ayırt edilemiyorlar).
+            if (!/^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/.test(code)) {
+                document.getElementById('notfound').hidden = false;
+                return;
+            }
+            document.title = 'FanMap arkadaş daveti';
+            document.getElementById('who').textContent = 'Bir arkadaşın';
+            document.getElementById('handle').textContent = code;
+            document.getElementById('openApp').href = 'fanmap://arkadas/k/' + code;
+            document.getElementById('invite').hidden = false;
+
+            // Kopyalanan değer BAĞLANTININ TAMAMI, kodun kendisi değil: bu karta
+            // düşen kişi henüz uygulamayı kurmamış olabilir ve elindeki tek işe
+            // yarar şey bağlantı. (Davet kartında tersi — orada kod uygulamadaki
+            // bir alana yazılıyor.)
+            wireCopy(document.getElementById('copy'),
+                     document.getElementById('copyIcon'),
+                     location.origin + '/arkadas/k/' + code,
+                     'Davet bağlantısını kopyala');
+        }
+
         function showClan(rawTag) {
             var tag;
             try { tag = decodeURIComponent(rawTag); } catch (e) { tag = rawTag; }
