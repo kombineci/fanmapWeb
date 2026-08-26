@@ -27,12 +27,17 @@
 
       ⚠️ `og:image` MUTLAK adres olmalı — botlar göreli yolu çözmüyor.
 
-      🔴 BİLİNEN SINIR: GitHub Pages bu üç yolu **HTTP 404** ile sunuyor (kontrol:
-      `curl -o /dev/null -w '%{http_code}' https://fanmaptr.com/klan/TEST` → 404).
-      Önizleme botlarının çoğu 404 gövdesini ayrıştırmıyor, yani bu etiketler her
-      platformda kart üretmeyebilir. Etiketlerin burada olması yine de doğru ve
-      bedelsiz; kartın GARANTİ olması için yolun 200 dönmesi gerekiyor ve bu bir
-      barındırma kararı (bkz. iOS→Android v1.24 raporu §4.1).
+      🔴 KARTIN ŞARTI: YOL 200 DÖNMELİ. Önizleme botlarının çoğu 404 gövdesini
+      ayrıştırmıyor. GitHub Pages'te üç yol da 404 dönüyordu (statik site dinamik
+      yol sunamıyor), yani bu etiketler kart üretmiyordu.
+
+      `firebase.json` bunu çözüyor: /arkadas/**, /klan/**, /davet/** bu sayfaya
+      REWRITE ediliyor ve Firebase Hosting **200** ile sunuyor. Dosya adı hâlâ
+      404.html çünkü aynı sayfa gerçek 404'lerde de kullanılıyor — orada durum
+      kodu doğru şekilde 404 kalıyor.
+
+      Kontrol: `curl -o /dev/null -w '%{http_code}' https://fanmaptr.com/klan/TEST`
+      → 200 dönmeli. 404 dönüyorsa alan adı hâlâ GitHub Pages'i gösteriyordur.
     -->
     <meta property="og:site_name" content="FanMap">
     <meta property="og:title" content="FanMap — Türkiye'nin Taraftar Haritası">
@@ -184,6 +189,11 @@
         }
         .btn.soon:hover { transform: none; }
 
+        /* Mağaza satırı: masaüstünde iki düğme yan yana, telefonda tek düğme. */
+        .stores { display: grid; gap: 10px; }
+        .stores.two { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 420px) { .stores.two { grid-template-columns: 1fr; } }
+
         .steps {
             margin-top: 28px;
             text-align: left;
@@ -226,7 +236,7 @@
             <h1><span id="who"></span> seni FanMap'e çağırıyor</h1>
             <p class="lead">Arkadaş ekleyin, birlikte düello yapın ve şehrinizi takımınızın rengine boyayın.</p>
 
-            <div class="handle">
+            <div class="handle" id="handleRow">
                 <span id="handle"></span>
                 <button class="copy" id="copy" type="button" aria-label="Kullanıcı adını kopyala">
                     <svg id="copyIcon" viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>
@@ -235,7 +245,7 @@
 
             <div class="actions">
                 <a class="btn primary" id="openApp" href="#">Uygulamada Aç</a>
-                <span class="btn soon">App Store &amp; Google Play — yakında</span>
+                <div class="stores" id="inviteStores"></div>
             </div>
 
             <div class="steps">
@@ -243,7 +253,7 @@
                 <ol>
                     <li>FanMap'i aç, <strong>Arkadaşlar</strong> sekmesine gir.</li>
                     <li><strong>Arkadaş Ekle</strong>'ye dokun.</li>
-                    <li>Yukarıdaki kullanıcı adını yapıştır ve isteği gönder.</li>
+                    <li id="inviteStep">Yukarıdaki kullanıcı adını yapıştır ve isteği gönder.</li>
                 </ol>
             </div>
         </div>
@@ -265,7 +275,7 @@
 
             <div class="actions">
                 <a class="btn primary" id="clanOpenApp" href="#">Uygulamada Aç</a>
-                <span class="btn soon">App Store &amp; Google Play — yakında</span>
+                <div class="stores" id="clanStores"></div>
             </div>
 
             <div class="steps">
@@ -307,7 +317,7 @@
 
             <div class="actions">
                 <a class="btn primary" id="refOpenApp" href="#">Uygulamada Aç</a>
-                <span class="btn soon">App Store &amp; Google Play — yakında</span>
+                <div class="stores" id="refStores"></div>
             </div>
 
             <div class="steps">
@@ -340,13 +350,107 @@
         <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a>
     </footer>
 
+    <script src="/stores.js"></script>
     <script>
     (function () {
+
+        // Mağaza adresleri `stores.js`'ten geliyor — sitedeki TEK yer, ana sayfa
+        // da aynı dosyadan besleniyor. İkinci bir kopya, biri doldurulup diğeri
+        // unutulana kadar sessizce yaşardı.
+        //
+        // ⚠️ Yedek değer, dosya yüklenemezse sayfanın çökmemesi için: o hâlde
+        // kartlar bugünkü "yakında" yazısını gösteriyor, davet içeriği duruyor.
+        var STORES = window.FANMAP_STORES || { ios: '', android: '' };
+
+        // ── Cihaz tanıma ────────────────────────────────────────────────────
+        //
+        // ⚠️ iPad'in son sürümleri kendini masaüstü Safari gibi tanıtıyor
+        // ("Macintosh"); ayırt eden şey dokunmatik nokta sayısı. Bu olmadan
+        // iPad kullanıcısı "her iki mağaza" satırını görürdü.
+        var ua = navigator.userAgent || '';
+        var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+                    (/Macintosh/.test(ua) && (navigator.maxTouchPoints || 0) > 1);
+        var isAndroid = /Android/.test(ua);
+
+        /**
+         * Bir kartın indirme satırını doldurur.
+         *
+         * Telefonda YALNIZ kendi mağazası çiziliyor: iPhone'da Play düğmesi
+         * göstermek, dokunulduğunda hiçbir işe yaramayan bir seçenek sunmaktır.
+         * Masaüstünde ikisi birden — hangi telefondan bakılacağı bilinmiyor.
+         */
+        function renderStores(boxId) {
+            var box = document.getElementById(boxId);
+            if (!box) return;
+
+            var list = [];
+            if (isIOS) {
+                if (STORES.ios) list.push(['App Store\'da İndir', STORES.ios]);
+            } else if (isAndroid) {
+                if (STORES.android) list.push(['Google Play\'de İndir', STORES.android]);
+            } else {
+                if (STORES.ios) list.push(['App Store', STORES.ios]);
+                if (STORES.android) list.push(['Google Play', STORES.android]);
+            }
+
+            // Hiçbiri hazır değilse bugünkü davranış aynen korunuyor.
+            if (!list.length) {
+                var soon = document.createElement('span');
+                soon.className = 'btn soon';
+                soon.textContent = 'App Store & Google Play — yakında';
+                box.appendChild(soon);
+                return;
+            }
+
+            if (list.length === 2) box.classList.add('two');
+            list.forEach(function (item) {
+                var a = document.createElement('a');
+                a.className = 'btn ghost';
+                a.textContent = item[0];
+                a.href = item[1];
+                a.rel = 'noopener';
+                box.appendChild(a);
+            });
+        }
+
+        /**
+         * "Uygulamada Aç" düğmesine mağaza yedeği bağlar.
+         *
+         * 🔴 Yönlendirme SAYFA AÇILIRKEN DEĞİL, düğmeye basınca deneniyor.
+         * Otomatik denemede iOS Safari, uygulaması olmayan kişide "adres geçersiz"
+         * uyarısı çıkarıyor — kullanıcı hiçbir şey yapmadan bir hata görüyor.
+         *
+         * ⚠️ Sayfa gizlenirse zamanlayıcı İPTAL: uygulama açıldı demektir, ve
+         * iptal edilmezse kullanıcı uygulamadan geri döndüğünde kendini mağazada
+         * bulurdu.
+         */
+        function wireStoreFallback(btnId) {
+            var btn = document.getElementById(btnId);
+            var store = isIOS ? STORES.ios : (isAndroid ? STORES.android : '');
+            if (!btn || !store) return;
+
+            btn.addEventListener('click', function () {
+                var timer = setTimeout(function () { location.href = store; }, 1400);
+                var cancel = function () { clearTimeout(timer); };
+                window.addEventListener('pagehide', cancel, { once: true });
+                document.addEventListener('visibilitychange', function () {
+                    if (document.hidden) cancel();
+                }, { once: true });
+            });
+        }
+
         // ── Kullanıcı adını yoldan çıkar ────────────────────────────────────
         //
-        // Bu sayfa GitHub Pages'in 404 sayfası. Statik bir site /arkadas/<ad>
-        // gibi dinamik yolları sunamadığı için istek buraya düşüyor; adres
-        // çubuğunda özgün yol duruyor ve adı oradan okuyoruz.
+        // Bu sayfa üç davet yolunun ORTAK karşılayıcısı. GitHub Pages statik:
+        // /arkadas/k/<KOD> gibi DEĞİŞKEN yolları sunamadığı için istek 404
+        // sayfasına düşüyor; adres çubuğunda özgün yol duruyor ve hangi davet
+        // olduğunu oradan okuyoruz. Desen tutmazsa `notfound` kartı görünüyor.
+        //
+        // ⚠️ Durum kodu 404 kalıyor ve bunun BİLİNEN bir bedeli var: WhatsApp/X
+        // önizleme kartı çıkmıyor (botlar 404 gövdesini ayrıştırmıyor). Çözümü
+        // barındırma kararı, sayfa değil — hazır yapılandırma `firebase.json` +
+        // `MIGRATION.md` içinde duruyor, uygulanmadı. Bugün ertelenmesinin sebebi:
+        // uygulama henüz mağazalarda değil, yani sahada paylaşılan bağlantı yok.
         //
         // ⚠️ Evrensel bağlantı (Associated Domains) kuruluysa iOS bu sayfayı HİÇ
         // açmaz — bağlantıyı doğrudan uygulamaya verir. Burası uygulaması olmayan
@@ -387,6 +491,19 @@
             return;
         }
 
+        // Android v1.27: /arkadas/u/<uid>
+        //
+        // 🔴 Bu dal olmadan Android kullanıcısının paylaştığı bağlantı bu sayfada
+        // "sayfa bulunamadı"ya düşüyordu — oysa gayet geçerli bir davet. Biz bu
+        // biçimi ÜRETMİYORUZ (üretim /arkadas/k/<KOD>), ama o sürüm sahada ve
+        // paylaşılmış bağlantılar geriye dönük düzelmiyor. Uygulamanın iki
+        // istemcisi de üç biçimi de okuyor; sayfa da okumalı.
+        var um = /^\/arkadas\/u\/([^\/?#]+)\/?$/i.exec(location.pathname);
+        if (um && um[1]) {
+            showFriendByUid(um[1]);
+            return;
+        }
+
         var m = /^\/arkadas\/([^\/?#]+)\/?$/i.exec(location.pathname);
         var raw = m && m[1];
         if (!raw) {
@@ -403,7 +520,13 @@
         // Güvenlik: ad DOM'a yalnız metin olarak konuyor (innerHTML YOK).
         // Kullanıcı adı bir başkasının kontrolündeki veri; HTML olarak yazmak
         // bu sayfayı XSS'e açardı.
-        if (!name || name.length > 40) {
+        // Sınır uygulamadakiyle aynı: `GameConstants.Friends.usernameMin/Max` → 3–20.
+        //
+        // ⚠️ ALT sınır da şart, yalnız üst sınır değildi. Eskiden 1 karakter de
+        // geçiyordu ve `/arkadas/u` "@u seni FanMap'e çağırıyor" kartı açıyordu —
+        // öyle bir kullanıcı OLAMAZ (3 karakter alt sınırı). Kart uydurma bir kişiyi
+        // gerçekmiş gibi gösteriyordu; `/arkadas/k` için de aynısı geçerliydi.
+        if (!name || name.length < 3 || name.length > 20) {
             document.getElementById('notfound').hidden = false;
             return;
         }
@@ -412,7 +535,7 @@
         document.getElementById('who').textContent = '@' + name;
         document.getElementById('handle').textContent = name;
         document.getElementById('openApp').href = 'fanmap://arkadas/' + encodeURIComponent(name);
-        document.getElementById('invite').hidden = false;
+        showInvite();
 
         // ── Kopyala ─────────────────────────────────────────────────────────
         var btn = document.getElementById('copy');
@@ -478,7 +601,18 @@
             document.getElementById('who').textContent = 'Bir arkadaşın';
             document.getElementById('handle').textContent = code;
             document.getElementById('openApp').href = 'fanmap://arkadas/k/' + code;
-            document.getElementById('invite').hidden = false;
+            showInvite();
+
+            // 🔴 Adım metni BAĞLANTIYI söylemeli, kodu DEĞİL.
+            //
+            // Varsayılan metin "yukarıdaki kullanıcı adını yapıştır" diyor ve o
+            // kutuda kod yazıyor. Kodu elle yazan kişi başka birine istek gönderir:
+            // uygulamanın arkadaş ekleme alanı DÜZ METNİ her zaman kullanıcı adı
+            // sayıyor (kod ancak bağlantı içinde, `k/` önekiyle tanınıyor) — ve
+            // `KARTAL` gibi bir değer hem geçerli bir kod hem geçerli bir kullanıcı
+            // adı. Kopyala düğmesi zaten bağlantının tamamını veriyor.
+            document.getElementById('inviteStep').textContent =
+                'Kopyala düğmesindeki bağlantıyı yapıştır ve isteği gönder.';
 
             // Kopyalanan değer BAĞLANTININ TAMAMI, kodun kendisi değil: bu karta
             // düşen kişi henüz uygulamayı kurmamış olabilir ve elindeki tek işe
@@ -488,6 +622,43 @@
                      document.getElementById('copyIcon'),
                      location.origin + '/arkadas/k/' + code,
                      'Davet bağlantısını kopyala');
+        }
+
+        /**
+         * Arkadaş kartını açar.
+         *
+         * ⚠️ Üç dal (kod, uid, ad) da BURADAN geçiyor: indirme satırını çizmeyi
+         * unutan bir dördüncü dal, kartı düğmesiz yayına çıkarırdı.
+         */
+        function showInvite() {
+            renderStores('inviteStores');
+            wireStoreFallback('openApp');
+            document.getElementById('invite').hidden = false;
+        }
+
+        // Android v1.27 biçimi — /arkadas/u/<uid>
+        //
+        // ⚠️ uid EKRANA YAZILMIYOR. 28 karakterlik opak bir sistem numarası:
+        // kullanıcıya hiçbir şey ifade etmiyor, kopyalanacak bir değeri yok ve
+        // arkadaş ekleme alanına yazılırsa hiçbir işe yaramıyor. Bu yüzden kod
+        // kutusu bu dalda GİZLENİYOR; sayfa yalnız "uygulamada aç" ve bağlantıyı
+        // kopyalama yolunu sunuyor.
+        //
+        // Süzgeç uygulamadakiyle aynı ölçüt (`FriendLink.uidTarget`): alfanümerik,
+        // 20–128 karakter. Tutmayan bir değer bozuk bağlantıdır.
+        function showFriendByUid(rawUid) {
+            var uid = String(rawUid || '').trim();
+            if (!/^[A-Za-z0-9]{20,128}$/.test(uid)) {
+                document.getElementById('notfound').hidden = false;
+                return;
+            }
+            document.title = 'FanMap arkadaş daveti';
+            document.getElementById('who').textContent = 'Bir arkadaşın';
+            document.getElementById('handleRow').hidden = true;
+            document.getElementById('openApp').href = 'fanmap://arkadas/u/' + uid;
+            document.getElementById('inviteStep').textContent =
+                'Bu bağlantıya uygulama yüklüyken yeniden dokun — istek oradan gider.';
+            showInvite();
         }
 
         function showClan(rawTag) {
@@ -507,6 +678,8 @@
             document.getElementById('clanWho').textContent = '#' + tag;
             document.getElementById('clanHandle').textContent = tag;
             document.getElementById('clanOpenApp').href = 'fanmap://klan/' + tag;
+            renderStores('clanStores');
+            wireStoreFallback('clanOpenApp');
             document.getElementById('clan').hidden = false;
 
             wireCopy(document.getElementById('clanCopy'),
@@ -549,6 +722,8 @@
             document.getElementById('refReward').textContent = INVITEE_REWARD;
             document.getElementById('refCode').textContent = pretty;
             document.getElementById('refOpenApp').href = 'fanmap://davet/' + code;
+            renderStores('refStores');
+            wireStoreFallback('refOpenApp');
             document.getElementById('referral').hidden = false;
 
             wireCopy(document.getElementById('refCopy'),

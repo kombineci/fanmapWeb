@@ -416,16 +416,16 @@
         <h2>Şehrin hangi renge boyanacak?</h2>
         <p>XOX ve 321 düellolarında rakiplerini yen, quizleri çöz ve ilini takımının rengine boya. Türkiye'nin taraftar haritasındaki yerini kap.</p>
         <div class="cta-row">
-            <span class="store soon" role="button" aria-disabled="true">
+            <span class="store soon" role="button" aria-disabled="true" data-store="ios">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.03-2.83 2.31-4.19 2.42-4.25-1.32-1.93-3.38-2.2-4.11-2.23-1.75-.18-3.41 1.03-4.29 1.03-.88 0-2.25-1.01-3.7-.98-1.9.03-3.66 1.11-4.64 2.81-1.98 3.43-.51 8.5 1.42 11.28.94 1.36 2.06 2.89 3.53 2.83 1.42-.06 1.96-.92 3.67-.92 1.71 0 2.2.92 3.7.89 1.53-.03 2.5-1.39 3.43-2.76 1.08-1.58 1.53-3.11 1.55-3.19-.03-.02-2.98-1.14-3.01-4.53zM14.28 3.9c.78-.94 1.3-2.26 1.16-3.57-1.12.05-2.48.75-3.28 1.69-.72.83-1.35 2.16-1.18 3.43 1.25.1 2.52-.63 3.3-1.55z"/></svg>
                 <span><small>Çok Yakında</small><b>App Store</b></span>
             </span>
-            <span class="store soon" role="button" aria-disabled="true">
+            <span class="store soon" role="button" aria-disabled="true" data-store="android">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1L13 12.1v-.2L3.7 2.2l-.1.1zm12.7 6.5L5.8 2.9l7.6 7.6 2.9-1.7zM5.8 21.1l10.5-5.9-2.9-2.9-7.6 8.8zm14.6-9.9l-2.8-1.6-3.1 3.1 3.1 3.1 2.8-1.6c.9-.5.9-1.9 0-2.4z"/></svg>
                 <span><small>Çok Yakında</small><b>Google Play</b></span>
             </span>
         </div>
-        <p class="cta-soon">📲 App Store &amp; Google Play'de çok yakında</p>
+        <p class="cta-soon" id="ctaSoon">📲 App Store &amp; Google Play'de çok yakında</p>
     </div>
 
     <!-- FOOTER -->
@@ -518,5 +518,49 @@
             document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
         })();
     </script>
+
+<!--
+  İndirme düğmelerini `stores.js`'teki adreslerle canlandırır.
+
+  🔴 Adresler BOŞKEN hiçbir şey yapmıyor: düğmeler "Çok Yakında" hâlinde,
+  tıklanamaz kalıyor. Bu yüzden dosya bugünden yayında durabiliyor — lansman
+  günü `stores.js` doldurulunca bu sayfa ve davet sayfası birlikte canlanıyor.
+
+  ⚠️ `<span>` `<a>`'ya DÖNÜŞTÜRÜLMÜYOR, üzerine tıklama davranışı bağlanıyor:
+  düğmenin bütün stili (`.store`) span'e yazılmış; etiketi değiştirmek görünümü
+  bozar ve iki yerde bakım gerektirirdi.
+-->
+<script src="/stores.js"></script>
+<script>
+(function () {
+    var S = window.FANMAP_STORES || {};
+    var acilan = 0;
+
+    document.querySelectorAll('[data-store]').forEach(function (el) {
+        var url = S[el.getAttribute('data-store')];
+        if (!url) return;                       // hazır değil — "Çok Yakında" kalsın
+
+        el.classList.remove('soon');
+        el.removeAttribute('aria-disabled');
+        el.setAttribute('role', 'link');
+        el.setAttribute('tabindex', '0');
+        el.style.cursor = 'pointer';
+
+        var kucuk = el.querySelector('small');
+        if (kucuk) kucuk.textContent = 'İndir';
+
+        var git = function () { window.location.href = url; };
+        el.addEventListener('click', git);
+        el.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); git(); }
+        });
+        acilan++;
+    });
+
+    // İki düğme de canlandıysa "çok yakında" cümlesi artık YALAN.
+    var not = document.getElementById('ctaSoon');
+    if (not && acilan === document.querySelectorAll('[data-store]').length) not.hidden = true;
+})();
+</script>
 </body>
 </html>

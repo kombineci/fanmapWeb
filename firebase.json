@@ -1,0 +1,38 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      ".git/**",
+      ".github/**",
+      "**/node_modules/**",
+      "CNAME",
+      ".nojekyll",
+      "MIGRATION.md"
+    ],
+    "cleanUrls": false,
+    "trailingSlash": false,
+    "rewrites": [
+      { "source": "/arkadas/**", "destination": "/404.html" },
+      { "source": "/klan/**", "destination": "/404.html" },
+      { "source": "/davet/**", "destination": "/404.html" }
+    ],
+    "headers": [
+      {
+        "source": "/.well-known/apple-app-site-association",
+        "headers": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Cache-Control", "value": "public, max-age=3600" }
+        ]
+      },
+      {
+        "source": "/.well-known/assetlinks.json",
+        "headers": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Cache-Control", "value": "public, max-age=3600" }
+        ]
+      }
+    ]
+  }
+}
