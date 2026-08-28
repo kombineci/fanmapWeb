@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çerez Politikası - FanMap</title>
+    <meta name="description" content="FanMap web sitesinin çerez ve yerel depolama politikası; kullanılan anahtarlar, süreler ve tercih yönetimi.">
+    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="canonical" href="https://fanmaptr.com/cookie-policy.html">
+    <meta property="og:title" content="Çerez Politikası — FanMap">
+    <meta property="og:description" content="fanmaptr.com çerez ve yerel depolama politikası; kullanılan anahtarlar ve tercih yönetimi.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fanmaptr.com/cookie-policy.html">
+    <meta property="og:image" content="https://fanmaptr.com/icon-512.png">
+    <meta property="og:site_name" content="FanMap">
+    <meta property="og:locale" content="tr_TR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Çerez Politikası — FanMap">
+    <meta name="twitter:description" content="fanmaptr.com çerez ve yerel depolama politikası; kullanılan anahtarlar ve tercih yönetimi.">
+    <meta name="twitter:image" content="https://fanmaptr.com/icon-512.png">
+    <link rel="stylesheet" href="fonts/space-grotesk.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --ink: #14152a; --ink-soft: #3f4060; --muted: #6b6c85;
+            --bg: #ffffff; --bg-soft: #f7f7fc; --line: #e9e8f5;
+            --accent: #6366f1; --accent-soft: rgba(99,102,241,.1);
+            --ok: #16a34a; --danger: #e11d48;
+            --font: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--body); background: var(--bg); color: var(--ink-soft);
+            line-height: 1.8; -webkit-font-smoothing: antialiased;
+        }
+        .topbar {
+            position: sticky; top: 0; z-index: 10;
+            background: rgba(255,255,255,.85); backdrop-filter: saturate(180%) blur(12px);
+            border-bottom: 1px solid var(--line);
+        }
+        .topbar-in { max-width: 880px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+        .brand { display: flex; align-items: center; gap: 10px; font-family: var(--font); font-weight: 700; color: var(--ink); text-decoration: none; font-size: 1.1rem; }
+        .brand img { width: 30px; height: 30px; border-radius: 8px; }
+        .topbar .home { color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 500; }
+        .topbar .home:hover { color: var(--accent); }
+        .container { max-width: 880px; margin: 0 auto; padding: 44px 24px 80px; }
+        .doc-head { border-bottom: 1px solid var(--line); padding-bottom: 26px; margin-bottom: 10px; }
+        h1 { font-family: var(--font); font-size: clamp(1.7rem, 4vw, 2.2rem); color: var(--ink); letter-spacing: -0.02em; margin-bottom: 10px; }
+        .date { color: var(--muted); font-size: 0.9rem; }
+        .lead { color: var(--ink-soft); margin-top: 20px; font-size: 1.02rem; }
+        h2 {
+            font-family: var(--font); color: var(--ink); font-size: 1.28rem; letter-spacing: -0.01em;
+            margin-top: 44px; margin-bottom: 14px; padding-left: 14px; border-left: 3px solid var(--accent);
+            scroll-margin-top: 84px;
+        }
+        p, li { margin-bottom: 12px; }
+        ul, ol { padding-left: 24px; margin-bottom: 12px; }
+        li { padding-left: 4px; }
+        strong { color: var(--ink); }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88em; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; }
+        a { color: var(--accent); text-decoration: none; font-weight: 500; }
+        a:hover { text-decoration: underline; }
+        .note {
+            background: var(--accent-soft); border: 1px solid rgba(99,102,241,.25);
+            border-radius: 14px; padding: 16px 20px; margin: 20px 0; font-size: 0.96rem;
+        }
+        .note :last-child { margin-bottom: 0; }
+        .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; margin: 16px 0; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.94rem; min-width: 520px; }
+        th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+        tr:last-child td { border-bottom: none; }
+        th { color: var(--ink); font-weight: 600; font-family: var(--font); background: var(--bg-soft); }
+        .prefs { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin: 20px 0; }
+        .prefs h3 { font-family: var(--font); color: var(--ink); font-size: 1.05rem; margin-bottom: 6px; }
+        .pref-row { display: flex; gap: 16px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; padding: 14px 0; border-top: 1px solid var(--line); }
+        .pref-row:first-of-type { border-top: 0; }
+        .pref-row .txt { flex: 1 1 320px; }
+        .pref-row .txt b { color: var(--ink); font-family: var(--font); }
+        .pref-row .txt span { display: block; font-size: .9rem; color: var(--muted); line-height: 1.6; }
+        .btn {
+            border: 1px solid var(--line); background: #fff; color: var(--ink);
+            font: inherit; font-weight: 600; font-size: .9rem; cursor: pointer;
+            padding: 9px 18px; border-radius: 11px; white-space: nowrap;
+            transition: background .18s, color .18s, border-color .18s;
+        }
+        .btn:hover { border-color: var(--accent); color: var(--accent); }
+        .btn[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+        .status { font-size: .88rem; color: var(--ok); font-weight: 600; min-height: 1.4em; margin-top: 10px; }
+        footer { border-top: 1px solid var(--line); margin-top: 56px; padding-top: 26px; color: var(--muted); font-size: 0.88rem; }
+        footer a { color: var(--muted); }
+        footer a:hover { color: var(--accent); }
+
+        /* Erişilebilirlik: klavye odağı her zaman görünür olmalı. */
+        a:focus-visible, button:focus-visible, summary:focus-visible {
+            outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px;
+        }
+        /* Hareket azaltma tercihi: yumuşak kaydırma ve geçişler kapanır. */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+                transition-duration: .001ms !important; scroll-behavior: auto !important;
+            }
+        }
+
+        /* 320 px'e kadar taşma güvenliği: uzun e-posta/URL satırı kutuyu kırmasın. */
+        p, li, td, th, dd { overflow-wrap: break-word; }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="topbar-in">
+            <a href="index.html" class="brand"><img src="icon-192.png" alt="FanMap" width="30" height="30"> FanMap</a>
+            <a href="index.html" class="home">← Ana Sayfa</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="doc-head">
+            <h1>Çerez ve Yerel Depolama Politikası</h1>
+            <p class="date">Son güncelleme: 28 Ağustos 2026 · Sürüm 1.0</p>
+            <p class="lead">
+                Bu politika, <strong>fanmaptr.com</strong> web sitesinde çerezlerin ve benzeri
+                teknolojilerin nasıl kullanıldığını açıklar. Mobil uygulamadaki veri işleme
+                için <a href="privacy-policy.html">Gizlilik Politikası</a>'na bakınız.
+            </p>
+            <div class="note">
+                <p>
+                    <strong>Kısaca:</strong> Bu sitede <strong>reklam, pazarlama veya analitik
+                    çerezi kullanılmaz.</strong> Ziyaretçi profili oluşturulmaz, ziyaretçiler
+                    izlenmez, üçüncü taraflarla veri paylaşılmaz. Yalnızca sitenin düzgün
+                    çalışması için tarayıcınızda birkaç küçük kayıt tutulur.
+                </p>
+            </div>
+        </div>
+
+        <h2 id="c1">1. Çerez nedir, bu sitede çerez var mı?</h2>
+        <p>
+            Çerezler, ziyaret ettiğiniz siteler tarafından tarayıcınıza kaydedilen küçük metin
+            dosyalarıdır. <strong>fanmaptr.com hiçbir çerez (cookie) yazmaz.</strong> Site
+            statik olarak sunulur; sunucu tarafında oturum tutulmaz.
+        </p>
+        <p>
+            Sitenin kullandığı tek teknoloji, tarayıcınızın <strong>yerel deposudur
+            (localStorage)</strong>. Yerel depo da çerezler gibi cihazınızda saklanır; bu
+            nedenle aşağıda şeffaflık adına ayrıntılı biçimde listelenmiştir. Bu kayıtlar
+            <strong>sizi tanımlamaz</strong>, siteler arası takip için kullanılmaz ve
+            sunucuya gönderilmez — yalnızca kendi tarayıcınızda kalır.
+        </p>
+
+        <h2 id="c2">2. Kullanılan yerel depolama kayıtları</h2>
+        <div class="table-wrap">
+            <table>
+                <tr><th>Anahtar</th><th>Amaç</th><th>Tür</th><th>Süre</th></tr>
+                <tr>
+                    <td><code>fanmap_map_v1</code></td>
+                    <td>Ana sayfadaki Türkiye haritasının il renklerini önbelleğe alır; sayfa her açılışta yeniden veri çekmez.</td>
+                    <td>İşlevsel</td>
+                    <td>24 saat sonra tazelenir; siz silene kadar kalır</td>
+                </tr>
+                <tr>
+                    <td><code>fanmap_notice_v1</code></td>
+                    <td>Sayfa altındaki bilgilendirme şeridini kapattığınızı hatırlar; şerit tekrar gösterilmez.</td>
+                    <td>Zorunlu</td>
+                    <td>Siz silene kadar</td>
+                </tr>
+                <tr>
+                    <td><code>fanmap_livemap_off</code></td>
+                    <td>Canlı harita verisini kapatma tercihinizi hatırlar. Yalnızca bu tercihi kullanırsanız oluşturulur.</td>
+                    <td>Tercih</td>
+                    <td>Siz silene kadar</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2 id="c3">3. Üçüncü taraf istekleri</h2>
+        <p>
+            Sitede üçüncü taraf reklam etiketi, sosyal medya pikseli, analitik betiği veya
+            harici yazı tipi servisi <strong>bulunmaz.</strong> Yazı tipleri sitenin kendi
+            sunucusundan yüklenir; bu nedenle sayfayı açtığınızda IP adresiniz bir yazı tipi
+            sağlayıcısına iletilmez.
+        </p>
+        <p>
+            Tek istisna, ana sayfadaki <strong>canlı haritadır</strong>: illerin güncel
+            renklerini almak için Google Firestore'un herkese açık okuma uç noktasına
+            günde en fazla bir istek yapılır. Bu istek sırasında, her internet isteğinde
+            olduğu gibi IP adresiniz ve tarayıcı bilgileriniz Google'a iletilir; bu istekle
+            birlikte size ait başka bir bilgi gönderilmez ve çerez yazılmaz. Google'ın veri
+            işleme uygulamaları için
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Gizlilik Politikası</a>'na
+            bakabilirsiniz.
+        </p>
+
+        <h2 id="c4">4. Tercihleriniz</h2>
+        <p>
+            Bu sitedeki depolama zorunlu ve işlevsel niteliktedir; buna rağmen dilerseniz
+            aşağıdan kapatabilir veya kayıtları silebilirsiniz.
+        </p>
+
+        <div class="prefs">
+            <h3>Depolama tercihleri</h3>
+            <div class="pref-row">
+                <div class="txt">
+                    <b>Canlı harita verisi</b>
+                    <span>Kapatırsanız ana sayfadaki harita Google Firestore'a hiç istek yapmaz ve iller renksiz (nötr gri) gösterilir.</span>
+                </div>
+                <button class="btn" type="button" id="liveMapBtn" aria-pressed="false">Yükleniyor…</button>
+            </div>
+            <div class="pref-row">
+                <div class="txt">
+                    <b>Kayıtlı verileri sil</b>
+                    <span>Bu sitenin tarayıcınızda tuttuğu tüm kayıtları (harita önbelleği, şerit ve tercih kayıtları) kaldırır.</span>
+                </div>
+                <button class="btn" type="button" id="clearBtn">Tümünü sil</button>
+            </div>
+            <p class="status" id="prefStatus" role="status" aria-live="polite"></p>
+        </div>
+
+        <p>
+            Ayrıca tarayıcınızın ayarlarından site verilerini dilediğiniz zaman
+            temizleyebilirsiniz: <em>Safari</em> → Ayarlar → Gizlilik → Web Sitesi Verilerini
+            Yönet; <em>Chrome</em> → Ayarlar → Gizlilik ve güvenlik → Çerezler ve diğer site
+            verileri.
+        </p>
+
+        <h2 id="c5">5. Mobil uygulama</h2>
+        <p>
+            FanMap mobil uygulaması bu sitedeki kayıtlardan bağımsızdır. Uygulama içindeki
+            reklam ve ölçümleme teknolojileri, izin yönetimi (ATT / UMP) ve veri işleme
+            esasları için <a href="privacy-policy.html">Gizlilik Politikası</a>'nın
+            7. ve 11. maddelerine bakınız.
+        </p>
+
+        <h2 id="c6">6. Değişiklikler ve iletişim</h2>
+        <p>
+            Bu politika, sitede kullanılan teknolojiler değiştikçe güncellenir. Sorularınız
+            için <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a> adresine
+            yazabilirsiniz.
+        </p>
+
+        <footer>
+            <p>
+                İlgili belgeler:
+                <a href="privacy-policy.html">Gizlilik Politikası</a> ·
+                <a href="terms-of-service.html">Kullanım Koşulları</a> ·
+                <a href="faq.html">Sık Sorulan Sorular</a>
+            </p>
+            <p style="margin-top:10px;">&copy; 2026 FanMap. Tüm hakları saklıdır.</p>
+        </footer>
+    </div>
+
+    <script>
+    (function () {
+        'use strict';
+        var OFF = 'fanmap_livemap_off';
+        var KEYS = ['fanmap_map_v1', 'fanmap_notice_v1', OFF];
+        var btn = document.getElementById('liveMapBtn');
+        var clearBtn = document.getElementById('clearBtn');
+        var status = document.getElementById('prefStatus');
+
+        function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+        function set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+        function del(k) { try { localStorage.removeItem(k); } catch (e) {} }
+
+        function render() {
+            var off = !!get(OFF);
+            // aria-pressed = "canlı harita açık mı" değil, "kapalı mı" bilgisini taşır;
+            // butonun metni de o an yapılacak eylemi değil, mevcut durumu söyler.
+            btn.setAttribute('aria-pressed', off ? 'true' : 'false');
+            btn.textContent = off ? 'Kapalı — aç' : 'Açık — kapat';
+        }
+
+        function say(msg) {
+            status.textContent = msg;
+            setTimeout(function () { if (status.textContent === msg) status.textContent = ''; }, 4000);
+        }
+
+        btn.addEventListener('click', function () {
+            if (get(OFF)) { del(OFF); say('Canlı harita açıldı.'); }
+            else { set(OFF, '1'); del('fanmap_map_v1'); say('Canlı harita kapatıldı ve önbellek silindi.'); }
+            render();
+        });
+
+        clearBtn.addEventListener('click', function () {
+            KEYS.forEach(del);
+            render();
+            say('Tüm kayıtlar silindi.');
+        });
+
+        render();
+    })();
+    </script>
+    <script src="site-notice.js" defer></script>
+</body>
+</html>

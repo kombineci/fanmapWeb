@@ -57,9 +57,7 @@
     <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/fonts/space-grotesk.css">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -220,6 +218,22 @@
         footer a { color: var(--muted); }
 
         [hidden] { display: none !important; }
+
+        /* Erişilebilirlik: klavye odağı her zaman görünür olmalı. */
+        a:focus-visible, button:focus-visible, summary:focus-visible {
+            outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px;
+        }
+        /* Hareket azaltma tercihi: yumuşak kaydırma ve geçişler kapanır. */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+                transition-duration: .001ms !important; scroll-behavior: auto !important;
+            }
+        }
+
+        /* 320 px'e kadar taşma güvenliği: uzun e-posta/URL satırı kutuyu kırmasın. */
+        p, li, td, th, dd { overflow-wrap: break-word; }
     </style>
 </head>
 <body>
@@ -347,6 +361,7 @@
     <footer>
         <a href="/privacy-policy.html">Gizlilik</a> ·
         <a href="/terms-of-service.html">Kullanım Şartları</a> ·
+        <a href="/cookie-policy.html">Çerez</a> ·
         <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a>
     </footer>
 
@@ -771,5 +786,6 @@
         }
     })();
     </script>
+    <script src="/site-notice.js" defer></script>
 </body>
 </html>

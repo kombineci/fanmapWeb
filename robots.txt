@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /arkadas/
+Disallow: /klan/
+Disallow: /davet/
+
+Sitemap: https://fanmaptr.com/sitemap.xml

@@ -9,9 +9,19 @@
     <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#6366f1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://fanmaptr.com/faq.html">
+    <meta property="og:title" content="Sık Sorulan Sorular — FanMap">
+    <meta property="og:description" content="FanMap hakkında en çok merak edilenler: kayıt, oyun, elmas, abonelik, şikayet ve hesap silme.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fanmaptr.com/faq.html">
+    <meta property="og:image" content="https://fanmaptr.com/icon-512.png">
+    <meta property="og:site_name" content="FanMap">
+    <meta property="og:locale" content="tr_TR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Sık Sorulan Sorular — FanMap">
+    <meta name="twitter:description" content="FanMap hakkında en çok merak edilenler: kayıt, oyun, elmas, abonelik, şikayet ve hesap silme.">
+    <meta name="twitter:image" content="https://fanmaptr.com/icon-512.png">
+    <link rel="stylesheet" href="fonts/space-grotesk.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -77,6 +87,22 @@
         footer { border-top: 1px solid var(--line); margin-top: 40px; padding-top: 26px; color: var(--muted); font-size: 0.88rem; }
         footer a { color: var(--muted); }
         footer a:hover { color: var(--accent); }
+
+        /* Erişilebilirlik: klavye odağı her zaman görünür olmalı. */
+        a:focus-visible, button:focus-visible, summary:focus-visible {
+            outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px;
+        }
+        /* Hareket azaltma tercihi: yumuşak kaydırma ve geçişler kapanır. */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+                transition-duration: .001ms !important; scroll-behavior: auto !important;
+            }
+        }
+
+        /* 320 px'e kadar taşma güvenliği: uzun e-posta/URL satırı kutuyu kırmasın. */
+        p, li, td, th, dd { overflow-wrap: break-word; }
     </style>
 </head>
 <body>
@@ -142,6 +168,39 @@
             </div>
         </details>
 
+        <details>
+            <summary>Reklamsız abonelik nasıl çalışır, nasıl iptal ederim?<span class="chev"></span></summary>
+            <div class="answer">
+                <p><strong>FanMap Reklamsız</strong>, uygulamadaki banner ve geçiş reklamlarını kaldıran otomatik yenilenen bir aboneliktir. Haftalık, aylık ve yıllık seçenekleri vardır; güncel fiyatlar uygulama içindeki satın alma ekranında ve mağaza sayfasında gösterilir. Kendi isteğinle izlediğin ödüllü reklamlar (enerji, ek deneme hakkı, seri koruma) abonelikte de kullanılabilir kalır.</p>
+                <p>Abonelik, dönem bitiminden en az 24 saat önce iptal edilmezse otomatik yenilenir ve ücret dönem bitiminden önceki 24 saat içinde tahsil edilir. İptal:</p>
+                <ol>
+                    <li><strong>iPhone / iPad:</strong> Ayarlar → [adın] → Abonelikler → FanMap → Aboneliği İptal Et.</li>
+                    <li><strong>Android:</strong> Google Play → Profil → Ödemeler ve abonelikler → Abonelikler → FanMap → İptal et.</li>
+                </ol>
+                <p>İptal, içinde bulunduğun dönemin sonunda geçerli olur; kalan süre için kısmi iade yapılmaz. Ayrıntılar için <a href="terms-of-service.html#m12">Kullanım Koşulları'nın 12. maddesine</a> bakabilirsin.</p>
+            </div>
+        </details>
+
+        <details id="sikayet-engelleme">
+            <summary>Rahatsız edici bir mesaj veya kullanıcı için ne yapmalıyım?<span class="chev"></span></summary>
+            <div class="answer">
+                <p>FanMap'te rahatsız edici içeriğe <strong>sıfır tolerans</strong> uygulanır. İki yol var:</p>
+                <ol>
+                    <li><strong>Şikayet et:</strong> Grup sohbetinde ilgili mesaja basılı tut → “Şikayet Et”. Bildirimin bize içerik, gönderen ve zaman bilgisiyle ulaşır.</li>
+                    <li><strong>Engelle:</strong> Kullanıcıyı engellediğinde mesajları akışından anında kaybolur, arkadaşlık ve düello davetleri durur. Engeli dilediğin zaman kaldırabilirsin.</li>
+                </ol>
+                <p>Bize ulaşan her şikayet <strong>en geç 24 saat içinde</strong> incelenir; kural ihlali tespit edilirse içerik kaldırılır ve ihlal eden hesap uyarılır, kısıtlanır veya kalıcı olarak kapatılır. Acil durumlarda <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a> adresine de yazabilirsin.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Sorularda hata var, ne yapabilirim?<span class="chev"></span></summary>
+            <div class="answer">
+                <p>Sorular ve futbolcu verileri kamuya açık kaynaklardan derleniyor; hatalı veya güncel olmayan bilgi bulunabilir. Bir soruyu hatalı bulursan uygulama içindeki soru bildirme seçeneğiyle bize iletebilirsin — bildirimler düzenli olarak incelenip düzeltiliyor.</p>
+                <p>Hatalı bir soru nedeniyle kaybedilen enerji, puan veya elmas için iade taahhüdümüz bulunmuyor; ayrıntılar <a href="terms-of-service.html#m9">Kullanım Koşulları'nın 9. maddesinde</a>.</p>
+            </div>
+        </details>
+
         <details id="hesap-silme">
             <summary>Hesabımı nasıl silerim?<span class="chev"></span></summary>
             <div class="answer">
@@ -151,10 +210,12 @@
                     <li><strong>E-posta ile:</strong> <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a> adresine hesap silme talebini iletebilirsin; talebin en geç 3 iş günü içinde işleme alınır.</li>
                 </ol>
                 <p>Hesabını sildiğinde şu veriler kalıcı olarak silinir: hesap bilgileri (e-posta, kullanıcı adı), profil ve avatar, desteklenen takım ve şehir bazlı destek geçmişi, quiz sonuçları ve sıralama puanları, elmas bakiyesi ve joker envanteri, düello geçmişi ve bildirim kayıtları.</p>
-                <p>Silme talebi alındıktan sonra tüm verilerin <strong>30 gün içinde</strong> kalıcı olarak silinir veya anonim hâle getirilir; bu süre içinde hesabını geri yükleyebilirsin. Ayrıntılar için <a href="privacy-policy.html">Gizlilik Politikası</a>'na bakabilirsin.</p>
+                <p>Uygulama içinden yapılan silme <strong>anında gerçekleşir</strong>; bekleme veya geri yükleme süresi yoktur. Grup sohbetine gönderdiğin mesajlar, sohbetin bütünlüğü için en fazla 30 gün daha görünmeye devam edebilir ve ardından otomatik silinir. Ayrıntılar için <a href="privacy-policy.html#g15">Gizlilik Politikası'nın 15. maddesine</a> bakabilirsin.</p>
+                <p>Kötüye kullanımı önlemek için, hesabını sildikten sonra <strong>aynı e-posta adresiyle 10 gün boyunca yeniden kayıt olamazsın.</strong></p>
+                <p>Aktif bir <strong>Reklamsız aboneliğin</strong> varsa, hesap silme aboneliği otomatik olarak iptal etmez; aboneliği ayrıca App Store veya Google Play hesabından iptal etmen gerekir.</p>
                 <div class="warning">
                     <span>⚠️</span>
-                    <span>Hesap silme işlemi, 30 günlük bekleme süresinin ardından geri alınamaz.</span>
+                    <span>Hesap silme işlemi anında yapılır ve <strong>geri alınamaz</strong>; tüm ilerlemen kalıcı olarak kaybolur.</span>
                 </div>
             </div>
         </details>
@@ -184,10 +245,12 @@
             <p>
                 İlgili belgeler:
                 <a href="privacy-policy.html">Gizlilik Politikası</a> ·
-                <a href="terms-of-service.html">Kullanım Koşulları</a>
+                <a href="terms-of-service.html">Kullanım Koşulları</a> ·
+                <a href="cookie-policy.html">Çerez Politikası</a>
             </p>
             <p style="margin-top:10px;">&copy; 2026 FanMap. Tüm hakları saklıdır.</p>
         </footer>
     </div>
+    <script src="site-notice.js" defer></script>
 </body>
 </html>

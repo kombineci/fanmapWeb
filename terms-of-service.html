@@ -4,20 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kullanım Koşulları - FanMap</title>
-    <meta name="description" content="FanMap uygulaması kullanım koşulları ve kullanıcı sözleşmesi.">
+    <meta name="description" content="FanMap uygulaması kullanım koşulları, kullanıcı sözleşmesi, topluluk kuralları ve abonelik şartları.">
     <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#6366f1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://fanmaptr.com/terms-of-service.html">
+    <meta property="og:title" content="Kullanım Koşulları — FanMap">
+    <meta property="og:description" content="FanMap kullanıcı sözleşmesi: topluluk kuralları, abonelik şartları ve sorumluluk hükümleri.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fanmaptr.com/terms-of-service.html">
+    <meta property="og:image" content="https://fanmaptr.com/icon-512.png">
+    <meta property="og:site_name" content="FanMap">
+    <meta property="og:locale" content="tr_TR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Kullanım Koşulları — FanMap">
+    <meta name="twitter:description" content="FanMap kullanıcı sözleşmesi: topluluk kuralları, abonelik şartları ve sorumluluk hükümleri.">
+    <meta name="twitter:image" content="https://fanmaptr.com/icon-512.png">
+    <link rel="stylesheet" href="fonts/space-grotesk.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --ink: #14152a; --ink-soft: #3f4060; --muted: #6b6c85;
             --bg: #ffffff; --bg-soft: #f7f7fc; --line: #e9e8f5;
             --accent: #6366f1; --accent-soft: rgba(99,102,241,.1);
+            --danger: #e11d48;
             --font: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
@@ -44,16 +55,54 @@
         h2 {
             font-family: var(--font); color: var(--ink); font-size: 1.28rem; letter-spacing: -0.01em;
             margin-top: 44px; margin-bottom: 14px; padding-left: 14px; border-left: 3px solid var(--accent);
+            scroll-margin-top: 84px;
         }
+        h3 { font-family: var(--font); color: var(--ink); font-size: 1.03rem; margin-top: 24px; margin-bottom: 8px; }
         p, li { margin-bottom: 12px; }
         ul, ol { padding-left: 24px; margin-bottom: 12px; }
         li { padding-left: 4px; }
         strong { color: var(--ink); }
         a { color: var(--accent); text-decoration: none; font-weight: 500; }
         a:hover { text-decoration: underline; }
+        .note {
+            background: var(--accent-soft); border: 1px solid rgba(99,102,241,.25);
+            border-radius: 14px; padding: 16px 20px; margin: 20px 0; font-size: 0.96rem;
+        }
+        .note :last-child { margin-bottom: 0; }
+        .warn {
+            background: rgba(225,29,72,.06); border: 1px solid rgba(225,29,72,.22);
+            border-radius: 14px; padding: 16px 20px; margin: 20px 0; font-size: 0.96rem;
+        }
+        .warn :last-child { margin-bottom: 0; }
+        .toc { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; margin: 28px 0 8px; }
+        .toc h2 { margin: 0 0 12px; padding: 0; border: none; font-size: .92rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+        .toc ol { columns: 2; column-gap: 32px; padding-left: 20px; margin: 0; font-size: .93rem; }
+        .toc li { margin-bottom: 6px; break-inside: avoid; }
+        @media (max-width: 640px) { .toc ol { columns: 1; } }
+        .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; margin: 16px 0; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.94rem; }
+        th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+        tr:last-child td { border-bottom: none; }
+        th { color: var(--ink); font-weight: 600; font-family: var(--font); background: var(--bg-soft); }
         footer { border-top: 1px solid var(--line); margin-top: 56px; padding-top: 26px; color: var(--muted); font-size: 0.88rem; }
         footer a { color: var(--muted); }
         footer a:hover { color: var(--accent); }
+
+        /* Erişilebilirlik: klavye odağı her zaman görünür olmalı. */
+        a:focus-visible, button:focus-visible, summary:focus-visible {
+            outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px;
+        }
+        /* Hareket azaltma tercihi: yumuşak kaydırma ve geçişler kapanır. */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+                transition-duration: .001ms !important; scroll-behavior: auto !important;
+            }
+        }
+
+        /* 320 px'e kadar taşma güvenliği: uzun e-posta/URL satırı kutuyu kırmasın. */
+        p, li, td, th, dd { overflow-wrap: break-word; }
     </style>
 </head>
 <body>
@@ -67,185 +116,580 @@
     <div class="container">
         <div class="doc-head">
             <h1>Kullanım Koşulları ve Kullanıcı Sözleşmesi</h1>
-            <p class="date">Son güncelleme: 24 Temmuz 2026</p>
+            <p class="date">Son güncelleme: 28 Ağustos 2026 · Sürüm 2.0</p>
             <p class="lead">
                 Bu Kullanıcı Sözleşmesi (“Sözleşme”), <strong>FanMap</strong> mobil
-                uygulamasının (“Uygulama”) kullanım koşullarını düzenler. Uygulamayı
-                indirerek, hesap oluşturarak veya kullanarak bu Sözleşme'yi ve
-                <a href="privacy-policy.html">Gizlilik Politikası</a>'nı okuduğunuzu,
-                anladığınızı ve kabul ettiğinizi beyan edersiniz. Koşulları kabul
-                etmiyorsanız lütfen Uygulamayı kullanmayınız.
+                uygulamasının (“Uygulama”) iOS ve Android sürümlerinin kullanım koşullarını
+                düzenler. Uygulamayı indirerek, hesap oluşturarak veya kullanarak bu
+                Sözleşme'yi ve <a href="privacy-policy.html">Gizlilik Politikası</a>'nı
+                okuduğunuzu, anladığınızı ve kabul ettiğinizi beyan edersiniz. Koşulları
+                kabul etmiyorsanız lütfen Uygulamayı kullanmayınız.
             </p>
+            <div class="note">
+                <p><strong>Kısa özet (bağlayıcı metnin yerine geçmez):</strong> FanMap bir
+                futbol bilgi oyunudur; kumar veya bahis hizmeti değildir. Elmas gibi sanal
+                öğelerin gerçek para değeri yoktur. Quiz soruları ve futbolcu verileri hata
+                içerebilir. Diğer kullanıcılara yönelik rahatsız edici davranışa
+                <strong>sıfır tolerans</strong> uygulanır; şikayetler 24 saat içinde
+                değerlendirilir. Reklamsız abonelik otomatik yenilenir ve mağaza hesabınızdan
+                dilediğiniz zaman iptal edilebilir.</p>
+            </div>
         </div>
 
-        <h2>1. Taraflar ve Geliştirici Kimliği</h2>
+        <nav class="toc" aria-label="İçindekiler">
+            <h2>İçindekiler</h2>
+            <ol>
+                <li><a href="#m1">Taraflar ve Geliştirici Kimliği</a></li>
+                <li><a href="#m2">Tanımlar</a></li>
+                <li><a href="#m3">Hizmetin Tanımı</a></li>
+                <li><a href="#m4">Üyelik, Hesap ve Yaş Sınırı</a></li>
+                <li><a href="#m5">Kullanıcı Adı, Profil ve Grup Adları</a></li>
+                <li><a href="#m6">Kullanıcı İçeriği ve Topluluk Kuralları</a></li>
+                <li><a href="#m7">İçerik Denetimi, Şikayet ve Engelleme</a></li>
+                <li><a href="#m8">Yasak Davranışlar ve Oyun Bütünlüğü</a></li>
+                <li><a href="#m9">Oyun İçeriğinin Doğruluğu; Quiz ve Düellolar</a></li>
+                <li><a href="#m10">Sanal Öğeler ve Oyun İçi Ekonomi</a></li>
+                <li><a href="#m11">Uygulama İçi Satın Alımlar</a></li>
+                <li><a href="#m12">Otomatik Yenilenen Abonelikler</a></li>
+                <li><a href="#m13">Reklamlar</a></li>
+                <li><a href="#m14">Fikri Mülkiyet Hakları</a></li>
+                <li><a href="#m15">Hizmette Değişiklik, Kesinti ve Sezon Sıfırlaması</a></li>
+                <li><a href="#m16">Garanti Reddi ve Sorumluluğun Sınırlandırılması</a></li>
+                <li><a href="#m17">Kullanıcının Tazmin Yükümlülüğü</a></li>
+                <li><a href="#m18">Hesabın Askıya Alınması ve Sonlandırılması</a></li>
+                <li><a href="#m19">Hesap Silme ve Yeniden Kayıt</a></li>
+                <li><a href="#m20">Kişisel Verilerin Korunması</a></li>
+                <li><a href="#m21">Sözleşme Değişiklikleri</a></li>
+                <li><a href="#m22">Mücbir Sebep</a></li>
+                <li><a href="#m23">Uygulanacak Hukuk ve Uyuşmazlık Çözümü</a></li>
+                <li><a href="#m24">Apple App Store'a İlişkin Ek Hükümler</a></li>
+                <li><a href="#m25">Google Play'e İlişkin Ek Hükümler</a></li>
+                <li><a href="#m26">Devir, Bölünebilirlik ve Feragat</a></li>
+                <li><a href="#m27">İletişim</a></li>
+                <li><a href="#m28">Yürürlük</a></li>
+            </ol>
+        </nav>
+
+        <h2 id="m1">1. Taraflar ve Geliştirici Kimliği</h2>
         <p>
-            Bu uygulama bireysel yazılım geliştiricileri tarafından yönetilmektedir.
+            Bu Uygulama bireysel yazılım geliştiricileri tarafından yönetilmektedir.
             iOS sürümü <strong>Özgün Can Beydili</strong>, Android sürümü ise
             <strong>Mustafa Yalçın Canbay</strong> adına yayınlanmaktadır (birlikte
             “Geliştirici”). Bu Sözleşme, Geliştirici ile Uygulamayı kullanan gerçek kişi
             (“Kullanıcı”) arasında kurulur.
         </p>
+        <p>
+            Bu Sözleşme <strong>yalnızca Kullanıcı ile Geliştirici arasındadır.</strong>
+            Apple Inc. ve Google LLC bu Sözleşme'nin tarafı değildir; Uygulamanın içeriğinden,
+            işleyişinden veya Uygulama kaynaklı taleplerden sorumlu değildir. Uygulama mağazası
+            kaynaklı özel hükümler için 24. ve 25. maddelere bakınız.
+        </p>
 
-        <h2>2. Tanımlar</h2>
+        <h2 id="m2">2. Tanımlar</h2>
         <ul>
-            <li><strong>Uygulama:</strong> FanMap adlı mobil oyun uygulaması ve tüm özellikleri.</li>
+            <li><strong>Uygulama:</strong> FanMap adlı mobil oyun uygulaması, sunucu tarafı hizmetleri ve tüm özellikleri.</li>
             <li><strong>Kullanıcı:</strong> Uygulamayı indiren ve kullanan gerçek kişi.</li>
-            <li><strong>Hesap:</strong> Kullanıcının kimlik doğrulaması ile oluşturduğu üyelik.</li>
-            <li><strong>Sanal Öğe:</strong> Elmas başta olmak üzere Uygulama içindeki dijital öğeler.</li>
+            <li><strong>Hesap:</strong> Kullanıcının Google veya Apple ile kimlik doğrulaması sonucu oluşan üyelik.</li>
+            <li><strong>Sanal Öğe:</strong> Elmas, joker, enerji, avatar ve benzeri, yalnızca Uygulama içinde kullanılabilen dijital öğeler.</li>
+            <li><strong>Kullanıcı İçeriği:</strong> Kullanıcı tarafından oluşturulan veya seçilen; kullanıcı adı, profil bilgileri, grup (klan) adı, etiketi, açıklaması, grup görevi metinleri, grup sohbeti mesajları, düello sırasında gönderilen emoji tepkileri ve diğer kullanıcılara görünen her türlü veri.</li>
+            <li><strong>Grup (Klan):</strong> Kullanıcıların kurabildiği veya katılabildiği, kendi sohbet kanalı bulunan topluluk.</li>
+            <li><strong>Abonelik:</strong> Uygulama içindeki reklamların bir bölümünü kaldıran, otomatik yenilenen ücretli hizmet.</li>
+            <li><strong>Mağaza:</strong> Apple App Store veya Google Play.</li>
         </ul>
 
-        <h2>3. Hizmetin Tanımı</h2>
+        <h2 id="m3">3. Hizmetin Tanımı</h2>
         <p>
             FanMap, Türkiye haritası üzerinde 81 ilde futbol taraftarlarının dağılımını
             gösteren, iOS ve Android platformlarında sunulan bir mobil oyun uygulamasıdır.
             Kullanıcılar; futbol soruları içeren quizleri çözebilir, şehirlerinde takımlarını
-            destekleyebilir, düello (XOX) oynayabilir, seviye atlayabilir ve sıralamada
-            yükselebilir. Geliştirici, Uygulamanın içerik ve özelliklerini önceden bildirimde
-            bulunmaksızın güncelleme, değiştirme veya sonlandırma hakkını saklı tutar.
+            destekleyerek harita renklerini etkileyebilir, XOX ve 3-2-1 düello modlarında
+            diğer kullanıcılarla veya yapay zekâ destekli rakiplerle (bot) karşılaşabilir,
+            grup (klan) kurabilir veya gruplara katılabilir, grup sohbetini kullanabilir,
+            arkadaş ekleyebilir, seviye atlayabilir, günlük giriş serisi ve davet ödülleri
+            kazanabilir ve sıralamalarda yer alabilir.
         </p>
-
-        <h2>4. Üyelik ve Hesap</h2>
         <p>
-            Uygulamayı kullanmak için Google veya Apple hesabınız üzerinden
-            kimlik doğrulaması yaparak kayıt olmanız gerekir. Kullanıcı, hesap bilgilerinin
-            gizliliğinden ve hesabı üzerinden gerçekleştirilen tüm işlemlerden bizzat
-            sorumludur. Kullanıcı, en az 13 yaşında olduğunu; 18 yaşından küçükse yasal
-            temsilcisinin izniyle Uygulamayı kullandığını kabul eder. Verilen bilgilerin
-            doğru ve güncel olması esastır.
+            Uygulama bir <strong>eğlence ve bilgi oyunudur</strong>. Şans oyunu, bahis veya
+            kumar hizmeti değildir; Uygulama içinde kazanılan hiçbir öğe gerçek para,
+            para benzeri değer veya maddi ödül teşkil etmez.
+        </p>
+        <p>
+            Geliştirici, Uygulamanın içerik ve özelliklerini önceden bildirimde bulunmaksızın
+            güncelleme, değiştirme, sınırlandırma veya sonlandırma hakkını saklı tutar.
         </p>
 
-        <h2>5. Kullanıcı Yükümlülükleri ve Yasak Davranışlar</h2>
+        <h2 id="m4">4. Üyelik, Hesap ve Yaş Sınırı</h2>
+        <p>
+            Uygulamayı kullanmak için Google veya Apple hesabınız üzerinden kimlik doğrulaması
+            yaparak kayıt olmanız gerekir. Kullanıcı, hesap bilgilerinin gizliliğinden ve
+            hesabı üzerinden gerçekleştirilen tüm işlemlerden bizzat sorumludur.
+        </p>
+        <p>
+            Kullanıcı, <strong>en az 13 yaşında</strong> olduğunu; 13-18 yaş aralığındaysa
+            Uygulamayı yasal temsilcisinin bilgisi ve izniyle kullandığını kabul ve beyan eder.
+            Uygulama, ilgili mağazanın yaş derecelendirmesi kapsamında kullanıcılar arası
+            mesajlaşma ve sohbet özellikleri içerir; yasal temsilcilerin bu özellikleri
+            dikkate alması beklenir.
+        </p>
+        <p>
+            Her Kullanıcı yalnızca bir hesap açabilir. Verilen bilgilerin doğru ve güncel
+            olması esastır; yanlış veya yanıltıcı bilgi, hesabın askıya alınması sebebidir.
+        </p>
+
+        <h2 id="m5">5. Kullanıcı Adı, Profil ve Grup Adları</h2>
+        <p>
+            Kullanıcı adı, grup adı, grup etiketi ve grup açıklaması diğer kullanıcılara açık
+            biçimde görünür. Bu alanlar; hakaret, küfür, cinsel içerik, nefret söylemi,
+            ayrımcılık, şiddet çağrısı, yasa dışı içerik, reklam/spam, başka bir kişi, kulüp,
+            marka veya Uygulama yetkilisi ile karıştırılmaya elverişli ifadeler içeremez.
+        </p>
+        <p>
+            Geliştirici, bu alanlar üzerinde <strong>otomatik içerik filtresi</strong>
+            uygular ve kurallara aykırı bulduğu adları önceden bildirimde bulunmaksızın
+            reddedebilir, değiştirebilir veya kaldırabilir. Kullanıcı adı üzerinde
+            Kullanıcı'ya mülkiyet hakkı tanınmaz; hesap silindiğinde ad yeniden kullanıma açılır.
+        </p>
+
+        <h2 id="m6">6. Kullanıcı İçeriği ve Topluluk Kuralları</h2>
+        <p>
+            Uygulama, kullanıcıların birbirine görünen içerik üretmesine ve iletişim kurmasına
+            olanak tanır (grup sohbeti, grup görevleri, profil ve ad alanları, düello emoji
+            tepkileri). Kullanıcı İçeriğinden <strong>münhasıran onu oluşturan Kullanıcı
+            sorumludur.</strong>
+        </p>
+
+        <h3>6.1. Lisans</h3>
+        <p>
+            Kullanıcı, oluşturduğu Kullanıcı İçeriği üzerindeki hakları kendisinde kalmak
+            kaydıyla; Geliştirici'ye, bu içeriği Uygulamanın işletilmesi amacıyla saklama,
+            çoğaltma, diğer kullanıcılara iletme ve gösterme konusunda dünya çapında,
+            bedelsiz, devredilebilir ve alt lisans verilebilir bir kullanım hakkı tanır.
+            Bu lisans, içerik kaldırıldığında veya hesap silindiğinde — teknik yedekler ve
+            hukuki saklama yükümlülükleri saklı kalmak üzere — sona erer.
+        </p>
+
+        <h3>6.2. Yasaklanan içerik ve davranışlar</h3>
+        <p>Aşağıdaki içerik ve davranışlar <strong>kesinlikle yasaktır</strong>:</p>
+        <ul>
+            <li>Hakaret, taciz, tehdit, zorbalık, ısrarlı rahatsız etme,</li>
+            <li>Nefret söylemi; ırk, etnik köken, milliyet, din, cinsiyet, cinsel yönelim, engellilik veya benzeri temellerde ayrımcılık,</li>
+            <li>Cinsel içerik, müstehcenlik, çocukların istismarına ilişkin her türlü içerik,</li>
+            <li>Şiddet övgüsü, şiddete veya suça teşvik, terör propagandası,</li>
+            <li>Yasa dışı mal ve hizmet tanıtımı, kumar ve bahis yönlendirmesi,</li>
+            <li>Kişisel verilerin izinsiz paylaşılması (telefon, adres, kimlik, özel görüntü vb.),</li>
+            <li>Başka bir kişi, kulüp, marka, kurum veya Uygulama yetkilisi gibi davranmak,</li>
+            <li>Spam, zincir mesaj, istenmeyen reklam, dolandırıcılık, kimlik avı (phishing),</li>
+            <li>Zararlı yazılım, bağlantı veya kod paylaşımı,</li>
+            <li>Üçüncü kişilerin fikri mülkiyet haklarını ihlal eden içerik.</li>
+        </ul>
+
+        <h3>6.3. Sıfır tolerans</h3>
+        <div class="warn">
+            <p>
+                <strong>Geliştirici, rahatsız edici içeriğe ve suistimalci kullanıcılara karşı
+                sıfır tolerans politikası uygular.</strong> Bu maddeye aykırı içerik, tespit
+                edildiğinde veya bildirildiğinde <strong>24 saat içinde</strong> incelenir ve
+                aykırılığın tespiti hâlinde içerik kaldırılır; içeriği üreten Kullanıcı'nın
+                hesabı, ihlalin ağırlığına göre uyarılır, süreli olarak kısıtlanır ya da
+                <strong>kalıcı olarak kapatılır.</strong> Ağır ihlallerde uyarı yapılmaksızın
+                doğrudan kalıcı kapatma uygulanır.
+            </p>
+        </div>
+
+        <h2 id="m7">7. İçerik Denetimi, Şikayet ve Engelleme</h2>
+
+        <h3>7.1. Otomatik filtre</h3>
+        <p>
+            Kullanıcı adları, grup adları ve sohbet mesajları otomatik bir içerik filtresinden
+            geçirilir; filtre tarafından yakalanan içerik yayımlanmaz. Filtre yardımcı bir
+            araçtır ve her ihlali yakalayacağı garanti edilmez.
+        </p>
+
+        <h3>7.2. Şikayet (bildirme)</h3>
+        <p>
+            Her Kullanıcı, rahatsız edici bulduğu bir mesajı veya kullanıcıyı Uygulama
+            içindeki <strong>“Şikayet Et”</strong> seçeneğiyle bildirebilir. Bildirim,
+            içeriğin kendisi, gönderen kullanıcı ve zaman bilgisiyle birlikte Geliştirici'ye
+            iletilir. Alternatif olarak
+            <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a> adresine bildirim
+            yapılabilir.
+        </p>
+
+        <h3>7.3. İnceleme süresi ve sonuçları</h3>
+        <p>
+            Geliştirici, kendisine ulaşan her şikayeti <strong>en geç 24 saat içinde</strong>
+            değerlendirir. İnceleme sonucunda:
+        </p>
+        <ul>
+            <li>Aykırı içerik Uygulamadan kaldırılır,</li>
+            <li>İçeriği üreten Kullanıcı uyarılır, kısıtlanır veya hesabı kapatılarak Uygulamadan çıkarılır,</li>
+            <li>Suç teşkil eden hâllerde yetkili makamlara bildirim yapılabilir.</li>
+        </ul>
+
+        <h3>7.4. Kullanıcıyı engelleme</h3>
+        <p>
+            Her Kullanıcı, dilediği kullanıcıyı Uygulama içinden <strong>engelleyebilir.</strong>
+            Engelleme ile birlikte engellenen kullanıcının içeriği engelleyen Kullanıcı'nın
+            akışından anında kaldırılır, taraflar arasında arkadaşlık ve düello daveti
+            gönderimi durur. Engelleme kaydı Geliştirici'ye iletilir ve moderasyon
+            değerlendirmesinde dikkate alınır. Engel, Kullanıcı tarafından dilediği zaman
+            kaldırılabilir.
+        </p>
+
+        <h3>7.5. İtiraz</h3>
+        <p>
+            Hakkında işlem uygulanan Kullanıcı,
+            <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a> adresine başvurarak
+            karara itiraz edebilir. İtirazlar makul sürede değerlendirilir; Geliştirici'nin
+            kararı nihaidir.
+        </p>
+
+        <h3>7.6. Ön denetim yükümlülüğü bulunmaması</h3>
+        <p>
+            Geliştirici, Kullanıcı İçeriğini yayımlanmadan önce genel olarak izlemek veya
+            denetlemekle yükümlü değildir; bu yöndeki bir hakkın kullanılmaması, sonraki
+            denetim hakkından feragat sayılmaz. Geliştirici, gerekçe göstermeksizin herhangi
+            bir Kullanıcı İçeriğini kaldırma hakkını saklı tutar.
+        </p>
+
+        <h2 id="m8">8. Yasak Davranışlar ve Oyun Bütünlüğü</h2>
         <p>Kullanıcı, Uygulamayı kullanırken aşağıdaki kurallara uymayı kabul eder:</p>
         <ul>
             <li>Doğru ve güncel bilgi sağlamak, hesap güvenliğini korumak,</li>
-            <li>Quizlerde hile yapmamak; bot, otomasyon, hile yazılımı veya benzeri araçlar kullanmamak,</li>
-            <li>Haksız avantaj sağlamak amacıyla birden fazla sahte hesap oluşturmamak,</li>
-            <li>Diğer kullanıcılara saygılı davranmak; nefret söylemi, şiddet, taciz veya hakaret içeren davranışlarda bulunmamak,</li>
-            <li>Uygulamanın güvenliğini tehlikeye atacak, tersine mühendislik yapacak veya sistemlere yetkisiz erişim sağlayacak eylemlerde bulunmamak,</li>
+            <li>Quiz ve düellolarda hile yapmamak; bot, otomasyon, betik, değiştirilmiş istemci, hafıza düzenleyici veya benzeri araçlar kullanmamak,</li>
+            <li>Haksız avantaj sağlamak amacıyla birden fazla hesap oluşturmamak, hesap alıp satmamak, devretmemek veya paylaşmamak,</li>
+            <li>Davet, ödül, sıralama, grup görevi ve sezon mekaniklerini amacı dışında veya anlaşmalı biçimde istismar etmemek,</li>
+            <li>Sunucu altyapısına otomatik veya aşırı istek göndermemek, API'leri yetkisiz kullanmamak,</li>
+            <li>Uygulamanın güvenliğini tehlikeye atacak, tersine mühendislik yapacak, kaynak koda erişmeye çalışacak veya sistemlere yetkisiz erişim sağlayacak eylemlerde bulunmamak,</li>
             <li>Yürürlükteki mevzuata ve üçüncü kişilerin haklarına aykırı davranmamak.</li>
         </ul>
         <p>
-            Bu kurallara aykırılık hâlinde Geliştirici, ilgili hesabı geçici veya kalıcı
-            olarak askıya alma ya da sonlandırma hakkına sahiptir.
+            Geliştirici, hile veya istismar tespit ettiği hesapların puanlarını, sıralamalarını,
+            sanal öğelerini ve ödüllerini <strong>geri alma, sıfırlama veya iptal etme</strong>
+            hakkına sahiptir. Bu işlemler için Kullanıcı'ya herhangi bir bedel iadesi veya
+            tazminat yapılmaz.
         </p>
 
-        <h2>6. Fikri Mülkiyet Hakları</h2>
+        <h2 id="m9">9. Oyun İçeriğinin Doğruluğu; Quiz ve Düellolar</h2>
+
+        <h3>9.1. Soru ve futbolcu verilerinde hata payı</h3>
+        <div class="warn">
+            <p>
+                Uygulamadaki sorular, cevap anahtarları, futbolcu bilgileri, kulüp ve transfer
+                verileri kamuya açık kaynaklardan derlenmektedir ve
+                <strong>hata, eksiklik, güncel olmama veya tutarsızlık içerebilir.</strong>
+                Geliştirici bu verilerin doğruluğunu, güncelliğini veya eksiksizliğini
+                <strong>garanti etmez</strong> ve hatalı bir soru, cevap veya veri nedeniyle
+                doğabilecek hiçbir zarardan sorumlu değildir.
+            </p>
+        </div>
         <p>
-            Uygulamaya ait tüm yazılım, tasarım, logo, metin, görsel ve içerikler üzerindeki
-            fikri ve sınai mülkiyet hakları Geliştirici'ye veya ilgili hak sahiplerine aittir.
-            Kullanıcıya, yalnızca kişisel ve ticari olmayan kullanım için sınırlı, münhasır
-            olmayan ve devredilemez bir kullanım hakkı tanınır. İçeriklerin izinsiz kopyalanması,
-            çoğaltılması veya dağıtılması yasaktır. Uygulama içinde yer alan takım isim ve
-            amblemleri ilgili kulüplere ait olup yalnızca tanıtım/bilgilendirme amacıyla kullanılır.
+            Bir sorunun doğru cevabı, Uygulamanın veri tabanında kayıtlı cevaptır. Kullanıcı,
+            hatalı bulduğu soruyu Uygulama içindeki soru bildirme seçeneğiyle iletebilir;
+            Geliştirici bildirimleri değerlendirir ve gerekli gördüğü düzeltmeleri yapar.
+            Ancak Kullanıcı, hatalı soru veya veri nedeniyle
+            <strong>kaybettiği enerji, süre, puan, seri, elmas, joker veya sıralama için
+            iade, telafi ya da tazminat talep edemeyeceğini</strong> kabul eder. Geliştirici,
+            takdir yetkisi kendisinde olmak üzere telafi sağlayabilir; bu, bir yükümlülük
+            doğurmaz.
         </p>
 
-        <h2>7. Sanal Öğeler ve Uygulama İçi Satın Alımlar</h2>
+        <h3>9.2. Düello ve eşleşme</h3>
         <p>
-            Uygulama içinde elmas gibi sanal öğeler bulunur. Bu öğeler yalnızca Uygulama
-            içinde kullanılabilir; <strong>gerçek para karşılığı bir değeri yoktur</strong>,
-            gerçek paraya çevrilemez ve Uygulama dışında devredilemez. Geliştirici, oyun
-            dengesini korumak amacıyla sanal öğelerin miktarını, fiyatını veya değerini
-            değiştirme hakkını saklı tutar.
+            XOX ve 3-2-1 düello modları gerçek zamanlı çalışır. Kullanıcı aşağıdakileri kabul eder:
         </p>
+        <ul>
+            <li>Uygun rakip bulunamadığında Kullanıcı, <strong>yapay zekâ destekli bir rakiple (bot)</strong> eşleştirilebilir,</li>
+            <li>İnternet bağlantısının kopması, gecikme (ping), cihaz kaynaklı donma, uygulamanın arka plana alınması veya kapatılması hâlinde maç <strong>hükmen kaybedilmiş sayılabilir</strong>,</li>
+            <li>Sunucu bakımı, kesinti veya senkronizasyon sorunları nedeniyle bir maç iptal edilebilir, sonucu değiştirilebilir veya yeniden hesaplanabilir,</li>
+            <li>Eşleşme süresi, rakip seçimi ve zorluk dengesi Geliştirici tarafından belirlenir ve önceden bildirimde bulunulmaksızın değiştirilebilir.</li>
+        </ul>
         <p>
-            Uygulama içi satın alımlar Apple App Store veya Google Play üzerinden
-            gerçekleştirilir ve ilgili mağazanın kuralları ile ödeme koşullarına tabidir.
-            İade talepleri, satın alımın yapıldığı mağazanın (Apple/Google) iade
-            politikaları çerçevesinde değerlendirilir. Sanal öğeler, teslimi anında ifa edilen
-            dijital içerik niteliğinde olup, tüketici mevzuatındaki istisnalar saklıdır.
+            Bu hâllerde kaybedilen enerji, giriş bedeli, puan veya ödül için iade ya da
+            tazminat talep edilemez.
         </p>
 
-        <h2>8. Reklamlar</h2>
+        <h3>9.3. Sıralamalar ve ödüller</h3>
         <p>
-            Uygulama, üçüncü taraf reklam ağları (Google AdMob) aracılığıyla reklam
-            içerebilir. Reklamların işlenmesi ve kişiselleştirilmesine ilişkin ayrıntılar
+            Sıralama tabloları ve destek sayaçları belirli aralıklarla hesaplanır ve anlık
+            olmayabilir. Geliştirici; hatalı, hileli veya teknik arıza kaynaklı kayıtları
+            düzeltme, sıralamaları yeniden hesaplama veya sıfırlama hakkına sahiptir.
+            Sıralamalara bağlı ödüller Uygulama içi sanal öğelerle sınırlıdır; nakit veya
+            nakde çevrilebilir hiçbir ödül taahhüt edilmez.
+        </p>
+
+        <h2 id="m10">10. Sanal Öğeler ve Oyun İçi Ekonomi</h2>
+        <p>
+            Uygulama içinde elmas, joker, enerji ve avatar gibi sanal öğeler bulunur. Bu öğeler
+            yalnızca Uygulama içinde kullanılabilir; <strong>gerçek para karşılığı bir değeri
+            yoktur</strong>, gerçek paraya çevrilemez, üçüncü kişilere satılamaz, devredilemez
+            veya Uygulama dışında kullanılamaz. Sanal öğeler üzerinde Kullanıcı'ya mülkiyet
+            değil, sınırlı ve geri alınabilir bir <strong>kullanım hakkı</strong> tanınır.
+        </p>
+        <p>
+            Geliştirici, oyun dengesini korumak amacıyla sanal öğelerin miktarını, fiyatını,
+            kazanım koşullarını, işlevini veya değerini değiştirme; bir öğeyi kullanımdan
+            kaldırma hakkını saklı tutar. Hesap kapatıldığında veya Uygulama sonlandırıldığında
+            kullanılmamış sanal öğeler bedelsiz olarak sona erer.
+        </p>
+
+        <h2 id="m11">11. Uygulama İçi Satın Alımlar</h2>
+        <p>
+            Uygulama içi satın alımlar Apple App Store veya Google Play üzerinden gerçekleştirilir
+            ve ilgili mağazanın kuralları ile ödeme koşullarına tabidir. Ödeme aracı (kart)
+            bilgileriniz Geliştirici tarafından işlenmez veya saklanmaz.
+        </p>
+        <p>
+            Satın alınan sanal öğeler, satın alma tamamlandığı anda hesaba tanımlanır ve
+            <strong>anında ifa edilen dijital içerik</strong> niteliğindedir. 6502 sayılı
+            Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği uyarınca,
+            elektronik ortamda anında ifa edilen ve tüketiciye anında teslim edilen gayrimaddi
+            mallarda <strong>cayma hakkı bulunmamaktadır.</strong> İade talepleri, satın alımın
+            yapıldığı mağazanın (Apple/Google) iade politikaları çerçevesinde değerlendirilir;
+            iade kararı ilgili mağazaya aittir.
+        </p>
+
+        <h2 id="m12">12. Otomatik Yenilenen Abonelikler</h2>
+        <p>
+            Uygulama, <strong>“FanMap Reklamsız”</strong> adı altında otomatik yenilenen bir
+            abonelik sunar. Abonelik, Uygulama içindeki banner ve geçiş reklamlarını kaldırır.
+            Kullanıcının kendi isteğiyle izlediği ödüllü reklamlar (ör. enerji, ek deneme hakkı,
+            seri koruma) abonelik süresince de kullanılabilir durumda kalır.
+        </p>
+
+        <h3>12.1. Süre ve fiyat</h3>
+        <div class="table-wrap">
+            <table>
+                <tr><th>Abonelik adı</th><td>FanMap Reklamsız</td></tr>
+                <tr><th>Süre seçenekleri</th><td>Haftalık, aylık veya yıllık</td></tr>
+                <tr><th>Fiyat</th><td>Uygulama içindeki satın alma ekranında ve mağaza sayfasında, yerel para biriminde ve vergiler dâhil olarak gösterilir. Yıllık planda aylık karşılığı bilgi amaçlı gösterilir; tahsilat tek seferde yıllık tutar üzerinden yapılır.</td></tr>
+                <tr><th>Ödeme</th><td>Satın alma onaylandığında Apple App Store veya Google Play hesabınızdan tahsil edilir.</td></tr>
+            </table>
+        </div>
+
+        <h3>12.2. Yenilenme ve iptal</h3>
+        <ul>
+            <li>Abonelik, <strong>mevcut dönemin bitiminden en az 24 saat önce iptal edilmediği sürece otomatik olarak yenilenir.</strong></li>
+            <li>Yenileme bedeli, dönem bitiminden önceki <strong>24 saat içinde</strong> mağaza hesabınızdan tahsil edilir.</li>
+            <li>Aboneliğinizi dilediğiniz zaman iptal edebilirsiniz: <strong>iOS'ta</strong> Ayarlar → [adınız] → Abonelikler; <strong>Android'de</strong> Google Play → Profil → Ödemeler ve abonelikler → Abonelikler.</li>
+            <li>İptal, içinde bulunulan dönemin <strong>sonunda</strong> yürürlüğe girer; kalan süre için kısmi iade yapılmaz.</li>
+            <li>Aboneliğin yönetimi ve iptali Kullanıcı'nın mağaza hesabı üzerinden yapılır; Geliştirici aboneliği Kullanıcı adına iptal edemez.</li>
+            <li>Ücretsiz deneme süresi sunulması hâlinde, Kullanıcı aynı ürünü satın aldığında denemenin kullanılmayan kısmı sona erer.</li>
+            <li>Fiyat değişikliklerinde ilgili mağazanın bildirim ve onay kuralları uygulanır; onay verilmezse abonelik yenilenmez.</li>
+        </ul>
+        <p>
+            Abonelik satın alma ekranında; aboneliğin adı, süresi, fiyatı ile
+            <a href="terms-of-service.html">Kullanım Koşulları</a> ve
+            <a href="privacy-policy.html">Gizlilik Politikası</a> bağlantıları yer alır.
+        </p>
+
+        <h2 id="m13">13. Reklamlar</h2>
+        <p>
+            Uygulama, üçüncü taraf reklam ağları (Google AdMob) aracılığıyla reklam içerebilir.
+            Reklam içeriği reklam verenlere aittir; Geliştirici reklamların içeriğinden,
+            doğruluğundan veya reklam veren ile Kullanıcı arasındaki ilişkiden sorumlu değildir.
+            Reklamların işlenmesi ve kişiselleştirilmesine ilişkin ayrıntılar
             <a href="privacy-policy.html">Gizlilik Politikası</a>'nda açıklanmıştır.
         </p>
 
-        <h2>9. Hizmette Değişiklik ve Kesinti</h2>
+        <h2 id="m14">14. Fikri Mülkiyet Hakları</h2>
+        <p>
+            Uygulamaya ait tüm yazılım, tasarım, logo, metin, görsel, ses ve içerikler
+            üzerindeki fikri ve sınai mülkiyet hakları Geliştirici'ye veya ilgili hak
+            sahiplerine aittir. Kullanıcıya; kişisel, ticari olmayan kullanım için sınırlı,
+            münhasır olmayan, devredilemez ve geri alınabilir bir kullanım hakkı tanınır.
+            İçeriklerin izinsiz kopyalanması, çoğaltılması, dağıtılması veya türev çalışma
+            oluşturulması yasaktır.
+        </p>
+        <p>
+            Uygulama içinde yer alan takım isim ve amblemleri ilgili kulüplere ait olup
+            yalnızca tanıtım ve bilgilendirme amacıyla kullanılmaktadır; Uygulama hiçbir kulüp,
+            federasyon veya lig tarafından desteklenmemekte ya da onlarla bağlantılı olarak
+            sunulmamaktadır. Hak sahipleri, taleplerini
+            <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a> adresine iletebilir.
+        </p>
+
+        <h2 id="m15">15. Hizmette Değişiklik, Kesinti ve Sezon Sıfırlaması</h2>
         <p>
             Geliştirici, Uygulamanın tamamını veya bir kısmını önceden bildirimde bulunmaksızın
             değiştirebilir, askıya alabilir veya sonlandırabilir. Bakım, güncelleme, teknik
-            arıza veya Geliştirici'nin kontrolü dışındaki nedenlerle hizmette geçici kesintiler
-            yaşanabilir.
+            arıza, üçüncü taraf hizmet kesintisi veya Geliştirici'nin kontrolü dışındaki
+            nedenlerle hizmette geçici kesintiler yaşanabilir.
         </p>
-
-        <h2>10. Sorumluluğun Sınırlandırılması</h2>
         <p>
-            Uygulama “olduğu gibi” ve “mevcut hâliyle” sunulmaktadır. Geliştirici, Uygulamanın
-            kesintisiz, hatasız veya güvenli çalışacağını garanti etmez. Yürürlükteki mevzuatın
-            izin verdiği azami ölçüde, Uygulamanın kullanımından veya kullanılamamasından
-            doğabilecek dolaylı, arızi veya sonuç niteliğindeki zararlardan Geliştirici sorumlu
-            tutulamaz. Bu madde, tüketici mevzuatından doğan devredilemez hakları ortadan kaldırmaz.
+            Harita renkleri, destek sayaçları ve sıralamalar <strong>sezon dönemleri hâlinde
+            sıfırlanabilir.</strong> Sezon sıfırlaması önceden Uygulama içinde duyurulur;
+            sıfırlanan sıralama ve destek kayıtları için tazminat talep edilemez.
         </p>
 
-        <h2>11. Hesabın Askıya Alınması ve Sonlandırılması</h2>
+        <h2 id="m16">16. Garanti Reddi ve Sorumluluğun Sınırlandırılması</h2>
+        <p>
+            Uygulama <strong>“olduğu gibi” ve “mevcut hâliyle”</strong> sunulmaktadır.
+            Geliştirici; Uygulamanın kesintisiz, hatasız, güvenli veya belirli bir amaca uygun
+            çalışacağını, içeriğin doğru ve güncel olacağını, veri kaybı yaşanmayacağını
+            <strong>garanti etmez.</strong>
+        </p>
+        <p>Yürürlükteki mevzuatın izin verdiği azami ölçüde Geliştirici, aşağıdakilerden sorumlu tutulamaz:</p>
+        <ul>
+            <li>Soru, cevap anahtarı, futbolcu ve kulüp verilerindeki hata veya eksiklikler,</li>
+            <li>Düello, eşleşme, bağlantı kopması, gecikme veya sunucu kaynaklı sonuç kayıpları,</li>
+            <li>Sanal öğe, puan, seviye, seri veya sıralama kayıpları,</li>
+            <li>Diğer kullanıcıların davranışları ve ürettiği Kullanıcı İçeriği,</li>
+            <li>Üçüncü taraf hizmetlerin (mağaza, reklam ağı, altyapı sağlayıcı) kesinti ve hataları,</li>
+            <li>Dolaylı, arızi, özel veya sonuç niteliğindeki zararlar ile kâr kaybı.</li>
+        </ul>
+        <p>
+            Geliştirici'nin her hâlükârda toplam sorumluluğu, talebin doğduğu tarihten önceki
+            <strong>12 ay içinde Kullanıcı'nın Uygulama için ödediği toplam tutarla</strong>
+            sınırlıdır; hiç ödeme yapılmamışsa sorumluluk doğmaz. Bu madde; Geliştirici'nin
+            kastından veya ağır kusurundan doğan sorumluluğu ile tüketici mevzuatından doğan
+            devredilemez hakları ortadan kaldırmaz.
+        </p>
+
+        <h2 id="m17">17. Kullanıcının Tazmin Yükümlülüğü</h2>
+        <p>
+            Kullanıcı; bu Sözleşme'ye aykırı davranışı, ürettiği Kullanıcı İçeriği veya
+            üçüncü kişilerin haklarını ihlali nedeniyle Geliştirici'ye yöneltilecek her türlü
+            talep, dava, idari yaptırım, zarar ve makul avukatlık masrafını karşılamayı kabul eder.
+        </p>
+
+        <h2 id="m18">18. Hesabın Askıya Alınması ve Sonlandırılması</h2>
         <p>
             Bu Sözleşme'ye veya yürürlükteki mevzuata aykırı davranan Kullanıcıların hesapları,
             önceden bildirimde bulunularak veya bulunulmaksızın geçici olarak askıya alınabilir
-            ya da kalıcı olarak kapatılabilir. Kullanıcı da hesabını dilediği zaman silebilir.
+            ya da kalıcı olarak kapatılabilir. Kalıcı kapatma hâlinde hesaptaki sanal öğeler,
+            puanlar ve abonelik hakları — mağaza tarafından yürütülen iade süreçleri saklı
+            kalmak üzere — bedelsiz olarak sona erer.
         </p>
 
-        <h2>12. Hesap Silme</h2>
+        <h2 id="m19">19. Hesap Silme ve Yeniden Kayıt</h2>
         <p>
-            Kullanıcı, hesabını Uygulama içindeki “Hesabı Sil” seçeneğinden silebilir. Hesap
-            silindiğinde veriler, <a href="faq.html#hesap-silme">Hesap Silme</a> bölümünde
-            açıklanan süre ve esaslar çerçevesinde kalıcı olarak silinir.
+            Kullanıcı, hesabını Uygulama içindeki <strong>“Hesabı Sil”</strong> seçeneğinden
+            silebilir veya <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a>
+            adresine talep iletebilir.
         </p>
-
-        <h2>13. Kişisel Verilerin Korunması</h2>
+        <div class="warn">
+            <p>
+                <strong>Hesap silme işlemi anında gerçekleşir ve geri alınamaz.</strong>
+                Silme onaylandığı anda kimlik doğrulama hesabınız ve kullanıcı kaydınız
+                silinir; elmas, joker, puan, seviye, seri, destek geçmişi ve düello geçmişi
+                dâhil tüm ilerleme kalıcı olarak kaybolur. Ayrıca, kötüye kullanımı önlemek
+                amacıyla aynı e-posta adresiyle <strong>10 gün boyunca yeniden kayıt
+                olunamaz.</strong>
+            </p>
+        </div>
         <p>
-            Kişisel verilerinizin işlenmesine ilişkin ayrıntılar, KVKK'ya uygun olarak
-            hazırlanan <a href="privacy-policy.html">Gizlilik Politikası ve KVKK Aydınlatma
-            Metni</a>'nde yer alır. Bu Sözleşme'yi kabul ederek söz konusu metni de okuduğunuzu
-            kabul edersiniz.
+            Silme sonrası veri saklama ve imha esasları için
+            <a href="privacy-policy.html">Gizlilik Politikası</a>'na bakınız. Aktif bir
+            aboneliğiniz varsa, hesap silme aboneliği otomatik olarak iptal etmez; aboneliğin
+            ayrıca mağaza hesabınızdan iptal edilmesi gerekir.
         </p>
 
-        <h2>14. Sözleşme Değişiklikleri</h2>
+        <h2 id="m20">20. Kişisel Verilerin Korunması</h2>
+        <p>
+            Kişisel verilerinizin işlenmesine ilişkin ayrıntılar, 6698 sayılı KVKK'ya uygun
+            olarak hazırlanan <a href="privacy-policy.html">Gizlilik Politikası ve KVKK
+            Aydınlatma Metni</a>'nde yer alır. Bu Sözleşme'yi kabul ederek söz konusu metni de
+            okuduğunuzu kabul edersiniz.
+        </p>
+
+        <h2 id="m21">21. Sözleşme Değişiklikleri</h2>
         <p>
             Geliştirici, bu Sözleşme'yi dilediği zaman güncelleme hakkını saklı tutar.
-            Değişiklikler Uygulama üzerinden veya bu sayfada yayımlandığı anda yürürlüğe girer.
-            Değişikliklerin ardından Uygulamayı kullanmaya devam etmeniz, güncel koşulları kabul
-            ettiğiniz anlamına gelir.
+            Değişiklikler bu sayfada yayımlandığı anda yürürlüğe girer. Esaslı değişiklikler
+            Uygulama içinde ayrıca duyurulur ve gerektiğinde yeniden onayınız istenir.
+            Değişikliklerin ardından Uygulamayı kullanmaya devam etmeniz, güncel koşulları
+            kabul ettiğiniz anlamına gelir. Koşulları kabul etmiyorsanız Uygulamayı kullanmayı
+            bırakmalı ve hesabınızı silmelisiniz.
         </p>
 
-        <h2>15. Mücbir Sebep</h2>
+        <h2 id="m22">22. Mücbir Sebep</h2>
         <p>
-            Doğal afet, yangın, salgın, siber saldırı, altyapı ve iletişim kesintileri, resmi
-            makam kararları gibi Geliştirici'nin makul kontrolü dışındaki hâllerde ortaya çıkan
+            Doğal afet, yangın, salgın, savaş, siber saldırı, altyapı ve iletişim kesintileri,
+            enerji kesintisi, üçüncü taraf bulut hizmetlerindeki arızalar ve resmî makam
+            kararları gibi Geliştirici'nin makul kontrolü dışındaki hâllerde ortaya çıkan
             yükümlülük ihlallerinden Geliştirici sorumlu tutulamaz.
         </p>
 
-        <h2>16. Uygulanacak Hukuk ve Yetkili Mahkeme</h2>
+        <h2 id="m23">23. Uygulanacak Hukuk ve Uyuşmazlık Çözümü</h2>
         <p>
-            Bu Sözleşme Türk Hukuku'na tabidir. İşbu Sözleşme'den doğabilecek uyuşmazlıkların
-            çözümünde <strong>Gaziantep Mahkemeleri ve İcra Daireleri</strong> yetkilidir.
+            Bu Sözleşme Türk Hukuku'na tabidir. Uyuşmazlıkların çözümünde
+            <strong>Gaziantep Mahkemeleri ve İcra Daireleri</strong> yetkilidir.
             Tüketici sıfatını haiz Kullanıcılar bakımından, 6502 sayılı Tüketicinin Korunması
-            Hakkında Kanun uyarınca yetkili tüketici hakem heyetleri ve tüketici mahkemelerine
-            başvuru hakkı saklıdır.
+            Hakkında Kanun uyarınca yetkili tüketici hakem heyetlerine ve tüketici
+            mahkemelerine başvuru hakkı saklıdır. Türkiye dışından erişen kullanıcılar
+            bakımından, bulundukları ülkenin emredici tüketici hükümleri saklıdır.
+        </p>
+        <p>
+            Tarafların öncelikle uyuşmazlığı iyi niyetle ve doğrudan iletişim yoluyla çözmeye
+            çalışması esastır; bu amaçla
+            <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a> adresine başvurulabilir.
         </p>
 
-        <h2>17. İletişim</h2>
+        <h2 id="m24">24. Apple App Store'a İlişkin Ek Hükümler</h2>
         <p>
-            Bu Sözleşme'ye ilişkin sorularınızı <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a>
-            adresi veya Uygulama içindeki destek kanalı üzerinden iletebilirsiniz.
+            Uygulamanın Apple App Store üzerinden edinilen iOS sürümü bakımından aşağıdaki
+            hükümler uygulanır ve çelişki hâlinde bu madde önceliklidir:
+        </p>
+        <ol>
+            <li><strong>Sözleşmenin tarafları:</strong> Bu Sözleşme yalnızca Kullanıcı ile Geliştirici arasındadır; Apple Inc. taraf değildir. Uygulamanın ve içeriğinin sorumluluğu münhasıran Geliştirici'ye aittir.</li>
+            <li><strong>Lisansın kapsamı:</strong> Kullanıcı'ya tanınan lisans; Apple'ın Media Services Kullanım Kuralları'nda izin verildiği ölçüde, Kullanıcı'nın sahip olduğu veya kontrol ettiği Apple markalı cihazlarda Uygulamayı kullanmaya yönelik, devredilemez bir lisanstır.</li>
+            <li><strong>Bakım ve destek:</strong> Uygulamaya ilişkin bakım ve destek hizmetlerini sağlama yükümlülüğü yalnızca Geliştirici'ye aittir. Apple'ın herhangi bir bakım veya destek yükümlülüğü bulunmamaktadır.</li>
+            <li><strong>Garanti:</strong> Uygulamanın yürürlükteki bir garantiye uygun olmaması hâlinde Kullanıcı, durumu Apple'a bildirebilir ve Apple, Uygulamanın satın alma bedelini iade edebilir. Yasaların izin verdiği azami ölçüde Apple'ın Uygulamaya ilişkin başkaca hiçbir garanti yükümlülüğü yoktur; garantiye uygunsuzluktan doğan diğer tüm talepler, kayıplar, sorumluluklar, zararlar ve masraflar yalnızca Geliştirici'nin sorumluluğundadır.</li>
+            <li><strong>Ürün talepleri:</strong> Uygulamaya veya Kullanıcı'nın Uygulamayı bulundurmasına ve kullanmasına ilişkin talepler — ürün sorumluluğu, yasal düzenlemelere uygunsuzluk, tüketicinin korunması ve gizlilik mevzuatı kapsamındaki talepler dâhil — Geliştirici'nin sorumluluğundadır; Apple sorumlu değildir.</li>
+            <li><strong>Fikri mülkiyet talepleri:</strong> Uygulamanın üçüncü bir kişinin fikri mülkiyet hakkını ihlal ettiği iddiasıyla ileri sürülecek taleplerin soruşturulması, savunulması, sulh edilmesi ve karşılanması yalnızca Geliştirici'nin sorumluluğundadır.</li>
+            <li><strong>Yasal uygunluk beyanı:</strong> Kullanıcı; ABD hükümetinin ambargo uyguladığı ya da “terörü destekleyen ülke” olarak nitelediği bir ülkede bulunmadığını ve ABD hükümetinin yasaklı veya kısıtlı taraflar listelerinde yer almadığını beyan eder.</li>
+            <li><strong>İletişim:</strong> Uygulamaya ilişkin her türlü soru, şikayet ve talep için iletişim adresi <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a>'dur.</li>
+            <li><strong>Üçüncü taraf lehdar:</strong> Apple ve Apple'ın bağlı şirketleri bu Sözleşme'nin üçüncü taraf lehdarlarıdır. Kullanıcı bu Sözleşme'yi kabul ettiğinde, Apple bu Sözleşme'yi Kullanıcı'ya karşı üçüncü taraf lehdar sıfatıyla ileri sürme hakkını kazanır.</li>
+            <li><strong>Üçüncü taraf koşulları:</strong> Kullanıcı, Uygulamayı kullanırken geçerli üçüncü taraf sözleşme koşullarına da uymayı kabul eder.</li>
+        </ol>
+
+        <h2 id="m25">25. Google Play'e İlişkin Ek Hükümler</h2>
+        <p>
+            Uygulamanın Google Play üzerinden edinilen Android sürümü bakımından; bu Sözleşme
+            Kullanıcı ile Geliştirici arasındadır, Google LLC taraf değildir. Uygulamanın
+            içeriğinden, işleyişinden ve desteğinden yalnızca Geliştirici sorumludur.
+            Satın alımlar, iadeler ve abonelik yönetimi Google Play Hizmet Şartları ile Google
+            Play ödeme ve iade politikalarına tabidir.
         </p>
 
-        <h2>18. Yürürlük</h2>
+        <h2 id="m26">26. Devir, Bölünebilirlik ve Feragat</h2>
         <p>
-            18 maddeden oluşan bu Sözleşme, Kullanıcı'nın Uygulamayı kullanmaya başlamasıyla
-            yürürlüğe girer ve hesabın kapatılmasına kadar geçerliliğini korur.
+            Kullanıcı, bu Sözleşme'den doğan hak ve yükümlülüklerini Geliştirici'nin yazılı
+            onayı olmaksızın devredemez. Geliştirici, Sözleşme'yi bir birleşme, devir veya
+            işletme devri hâlinde üçüncü kişilere devredebilir.
+        </p>
+        <p>
+            Sözleşme'nin herhangi bir hükmünün geçersiz veya uygulanamaz sayılması, diğer
+            hükümlerin geçerliliğini etkilemez. Geliştirici'nin bir hakkını kullanmaması, o
+            haktan feragat ettiği anlamına gelmez.
+        </p>
+
+        <h2 id="m27">27. İletişim</h2>
+        <p>
+            Bu Sözleşme'ye ilişkin sorularınızı, şikayetlerinizi ve içerik bildirimlerinizi
+            <a href="mailto:destek@fanmaptr.com">destek@fanmaptr.com</a> adresi veya Uygulama
+            içindeki destek kanalı üzerinden iletebilirsiniz.
+        </p>
+
+        <h2 id="m28">28. Yürürlük</h2>
+        <p>
+            28 maddeden oluşan bu Sözleşme, Kullanıcı'nın Uygulamayı kullanmaya başlamasıyla
+            yürürlüğe girer ve hesabın kapatılmasına kadar geçerliliğini korur. Bu sürüm
+            <strong>28 Ağustos 2026</strong> tarihinde yürürlüğe girmiş olup, 24 Temmuz 2026
+            tarihli önceki sürümün yerini alır.
         </p>
 
         <footer>
             <p>
                 İlgili belgeler:
                 <a href="privacy-policy.html">Gizlilik Politikası</a> ·
+                <a href="cookie-policy.html">Çerez Politikası</a> ·
                 <a href="faq.html">Sık Sorulan Sorular</a>
             </p>
             <p style="margin-top:10px;">&copy; 2026 FanMap. Tüm hakları saklıdır.</p>
         </footer>
     </div>
+    <script src="site-notice.js" defer></script>
 </body>
 </html>
