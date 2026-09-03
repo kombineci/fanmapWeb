@@ -179,6 +179,24 @@ console.log('— stores.js sitedeki TEK yer');
     t(`${dosya} içinde gömülü mağaza adresi yok`, gomulu.length === 0, gomulu.join(', '));
   }
 
+  // 🔴 HER indirme düğmesi `data-store` TAŞIMALI — canlandırma
+  // `querySelectorAll('[data-store]')` ile yapılıyor. Nitelik unutulan düğme
+  // sessizce ölü kalıyor: "Çok Yakında" yazısıyla, tıklanamaz hâlde, hiçbir
+  // hata üretmeden. Lansmandan sonra sayfanın üstündeki iki düğme tam olarak
+  // bu yüzden günlerce "Çok Yakında" gösterdi.
+  {
+    const html = fs.readFileSync(kok + 'index.html', 'utf8');
+    const dugmeler = html.match(/<span class="store[^>]*>/g) || [];
+    const eksik = dugmeler.filter(d => !d.includes('data-store='));
+    t('index.html: her indirme düğmesinde data-store var',
+      dugmeler.length > 0 && eksik.length === 0,
+      `${dugmeler.length} düğme, ${eksik.length} eksik: ${eksik.join(' | ')}`);
+
+    // İki mağaza da temsil edilmeli — biri unutulursa o platform hiç canlanmaz.
+    t('index.html: iOS ve Android düğmeleri var',
+      html.includes('data-store="ios"') && html.includes('data-store="android"'));
+  }
+
   // 🔴 Akıllı afişteki sayısal kimlik `stores.js`'teki adresle AYNI olmalı.
   // Safari etiketi sayfa ayrıştırılırken okuduğu için kimlik HTML'e gömülü
   // kalmak zorunda; bu test iki yerin ayrışmasını engelliyor.
