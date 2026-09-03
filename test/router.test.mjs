@@ -160,8 +160,15 @@ console.log('— stores.js sitedeki TEK yer');
 {
   const kok = new URL('..', import.meta.url).pathname;
   const cfg = fs.readFileSync(kok + 'stores.js', 'utf8');
-  t('stores.js bugün BOŞ (uygulama henüz mağazada değil)',
-    /ios:\s*''/.test(cfg) && /android:\s*''/.test(cfg));
+  // 🔴 Uygulama artık iki mağazada da yayında: adresler DOLU olmalı ve
+  // sorgu parametresi TAŞIMAMALI — iOS tarafı bu adrese `?action=write-review`
+  // ekleyerek değerlendirme sayfasını türetiyor, sorgulu adreste bu bozulur.
+  const ios = (cfg.match(/ios:\s*'([^']*)'/) || [])[1] ?? '';
+  const android = (cfg.match(/android:\s*'([^']*)'/) || [])[1] ?? '';
+  t('stores.js iOS adresi dolu ve sorgusuz',
+    /^https:\/\/apps\.apple\.com\/[^?#]+\/id\d+$/.test(ios), ios);
+  t('stores.js Android adresi dolu ve tek sorgusu paket adı',
+    /^https:\/\/play\.google\.com\/store\/apps\/details\?id=[\w.]+$/.test(android), android);
 
   for (const dosya of ['404.html', 'index.html']) {
     const html = fs.readFileSync(kok + dosya, 'utf8');
@@ -170,6 +177,17 @@ console.log('— stores.js sitedeki TEK yer');
     // lansman günü biri doldurulur, diğeri unutulurdu.
     const gomulu = html.match(/https:\/\/(apps\.apple\.com|play\.google\.com)[^"']*/g) || [];
     t(`${dosya} içinde gömülü mağaza adresi yok`, gomulu.length === 0, gomulu.join(', '));
+  }
+
+  // 🔴 Akıllı afişteki sayısal kimlik `stores.js`'teki adresle AYNI olmalı.
+  // Safari etiketi sayfa ayrıştırılırken okuduğu için kimlik HTML'e gömülü
+  // kalmak zorunda; bu test iki yerin ayrışmasını engelliyor.
+  {
+    const html = fs.readFileSync(kok + 'index.html', 'utf8');
+    const afis = (html.match(/apple-itunes-app"\s+content="app-id=(\d+)"/) || [])[1] ?? '';
+    const iosId = (cfg.match(/ios:\s*'[^']*\/id(\d+)'/) || [])[1] ?? '';
+    t('index.html akıllı afiş kimliği stores.js ile aynı',
+      afis !== '' && afis === iosId, `afiş=${afis} stores=${iosId}`);
   }
 }
 

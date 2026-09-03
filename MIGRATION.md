@@ -1,17 +1,22 @@
 # Lansman ve barındırma notları
 
-## 1. Lansman günü: `stores.js`
+## 1. Mağaza adresleri: `stores.js`
 
-Uygulama mağazalara çıktığında **tek dosya** doldurulacak:
+**Durum: DOLDURULDU (2026-09-03).** Uygulama iki mağazada da yayında:
 
 ```js
 window.FANMAP_STORES = {
-    ios: 'https://apps.apple.com/tr/app/fanmap/id<NUMARA>',
-    android: 'https://play.google.com/store/apps/details?id=<PAKET_ADI>'
+    ios: 'https://apps.apple.com/tr/app/fanmap-t%C3%BCrkiye/id6761418363',
+    android: 'https://play.google.com/store/apps/details?id=com.yalcincanbay.fanmap'
 };
 ```
 
-Bu iki satır şunları birden canlandırıyor:
+⚠️ **Sorgu parametresi eklenmedi, bilerek.** Paylaş düğmesinin verdiği adresteki
+`?l=tr` ve `&pcampaignid=web_share` kırpıldı: iOS uygulaması aynı adresin sonuna
+`?action=write-review` ekleyerek değerlendirme sayfasını türetiyor
+(`AppLinks.reviewURL`), sorgusu olan adreste bu bozulur.
+
+Bu iki satır şunları birden besliyor:
 
 - **Ana sayfa** (`index.html`) — "Çok Yakında" düğmeleri tıklanabilir olur, altındaki
   "çok yakında" cümlesi kendiliğinden gizlenir.
@@ -23,9 +28,17 @@ Bu iki satır şunları birden canlandırıyor:
   sonra mağazaya düşer. (Sayfa açılırken DEĞİL, düğmeye basınca — otomatik denemede
   iOS Safari uygulaması olmayan kişide "adres geçersiz" uyarısı çıkarıyor.)
 
-⚠️ Boş bırakmak güvenli ve bugünkü durum bu: hiçbir yarım düğme yayına çıkmıyor.
+⚠️ Bir mağazadan çekilmek gerekirse o satırı **boşaltmak** yeter: boş adres
+"çok yakında" hâline dönüyor, yarım düğme yayına çıkmıyor.
 
-Doğrulama: `node test/router.test.mjs 404.html` → 36 test, boş ve dolu durumların
+### Akıllı uygulama afişi (Safari, iOS)
+
+`index.html` başında `<meta name="apple-itunes-app" content="app-id=6761418363">`.
+🔴 Sayısal kimlik burada **mecburen gömülü**: Safari etiketi sayfa ayrıştırılırken
+okuyor, `stores.js` çalıştıktan sonra eklemek geç kalıyor. Ayrışmayı test tutuyor
+(`index.html akıllı afiş kimliği stores.js ile aynı`).
+
+Doğrulama: `node test/router.test.mjs 404.html` → 38 test, boş ve dolu durumların
 ikisini de ayrı ayrı tutuyor.
 
 ---
@@ -43,8 +56,12 @@ GitHub Pages statik: `/arkadas/k/K7M2QX` gibi **değişken** yolları sunamıyor
 404 sayfasına düşüyor. Firebase Hosting'in `rewrites` kuralı aynı sayfayı **200** ile
 sunuyor. Uygulamada ve bağlantı biçiminde hiçbir değişiklik yok.
 
-**Neden ertelendi:** uygulama henüz mağazalarda değil, yani sahada paylaşılan davet
-bağlantısı yok — kartın bugün izleyicisi yok. Lansmandan hemen önce yapılacak.
+**Neden ertelenmişti:** uygulama mağazalarda değildi, sahada paylaşılan davet
+bağlantısı yoktu — kartın izleyicisi yoktu.
+
+🔴 **Bu gerekçe 2026-09-03 itibarıyla düştü:** uygulama iki mağazada da yayında,
+davet bağlantıları artık sahada paylaşılıyor ve önizleme kartı hâlâ çıkmıyor.
+Taşıma **sıradaki iş**; bekleyen tek adım DNS'in çevrilmesi (aşağıdaki 4 adım).
 
 ⚠️ **Derin bağlantı BUGÜN DE çalışıyor.** iOS adresi AASA ile eşleştiriyor, sayfayı
 hiç çekmiyor. Bu taşıma uygulaması OLMAYAN kişi için.
