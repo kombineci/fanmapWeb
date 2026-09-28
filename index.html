@@ -272,7 +272,6 @@
         .cta h2 { font-size: clamp(2rem, 4.8vw, 3.1rem); letter-spacing: -.02em; margin-bottom: 16px; line-height: 1.08; }
         .cta p { color: rgba(255,255,255,.92); max-width: 520px; margin: 0 auto 32px; font-size: 1.08rem; }
         .cta .cta-row { justify-content: center; }
-        .cta-soon { margin-top: 24px !important; margin-bottom: 0 !important; font-size: .92rem; color: rgba(255,255,255,.9); font-weight: 600; }
         .cta .store { background: #fff; color: var(--ink); }
         .cta .store.soon { background: rgba(255,255,255,.14); color: #fff; border-color: rgba(255,255,255,.3); }
         .cta .store.soon small { color: #fff; }
@@ -443,7 +442,6 @@
                 <span><small>Çok Yakında</small><b>Google Play</b></span>
             </span>
         </div>
-        <p class="cta-soon" id="ctaSoon">📲 App Store &amp; Google Play'de çok yakında</p>
     </div>
 
     <!-- FOOTER -->
@@ -561,7 +559,6 @@
 <script>
 (function () {
     var S = window.FANMAP_STORES || {};
-    var acilan = 0;
 
     document.querySelectorAll('[data-store]').forEach(function (el) {
         var url = S[el.getAttribute('data-store')];
@@ -581,12 +578,7 @@
         el.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); git(); }
         });
-        acilan++;
     });
-
-    // İki düğme de canlandıysa "çok yakında" cümlesi artık YALAN.
-    var not = document.getElementById('ctaSoon');
-    if (not && acilan === document.querySelectorAll('[data-store]').length) not.hidden = true;
 })();
 </script>
     <script src="site-notice.js" defer></script>
